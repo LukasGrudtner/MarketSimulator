@@ -7,8 +7,8 @@
 
 //! Classe LinkedList para uma Lista.
 /*! 
-*   Na classe LinkedList, é implementado o funcionamento de uma lista
-*   através de Nodes que referenciam o próximo valor na lista e o dado na mesma.
+*   Na classe LinkedList, e implementado o funcionamento de uma lista
+*   atraves de Nodes que referenciam o proximo valor na lista e o dado na mesma.
 */
 
 namespace structures {
@@ -19,7 +19,7 @@ public:
 
 //! Construtor.
 /*!
-*   Construtor que inicializa o elemento head que será usado como cabeça para a lista.
+*   Construtor que inicializa o elemento head que sera usado como cabeÃ§a para a lista.
 */
     LinkedList() {
         size_ = 0;
@@ -35,7 +35,7 @@ public:
         clear();    
     }
 
-//! Função reponsável por limpar a lista.
+//! Funcao reponsavel por limpar a lista.
 /*!
 *   Faz com que a lista seja limpa.
 *   \sa empty(), pop_front()
@@ -46,7 +46,7 @@ public:
         }
     }
 
-//! Função reponsável por adicionar um elemento ao final da lista.
+//! Funcao reponsavel por adicionar um elemento ao final da lista.
 /*!
 *   Adiciona um elemento ao final da lista.
 *   \param data dado a ser adicionado no final da lista. 
@@ -56,7 +56,7 @@ public:
         insert(data, size());
     }
 
-//! Função reponsável por adicionar um elemento no inicio da lista.
+//! FunÃ§Ã£o reponsavel por adicionar um elemento no inicio da lista.
 /*!
 *   Adiciona um elemento no inicio da lista.
 *   \param data dado a ser adicionado no inicio da lista. 
@@ -75,7 +75,7 @@ public:
         }
     }
 
-//! Função reponsável por adicionar um elemento em uma posicao da lista.
+//! Funcao reponsavel por adicionar um elemento em uma posicao da lista.
 /*!
 *   Adiciona um elemento na posicao solicitada.
 *   \param data dado a ser adicionado na lista. 
@@ -108,7 +108,7 @@ public:
         }
     }
 
-//! Função reponsável por adicionar um elemento em ordem na lista.
+//! Funcao reponsavel por adicionar um elemento em ordem na lista.
 /*!
 *   Adiciona um elemento em ordem na lista.
 *   \param data dado a ser adicionado na lista. 
@@ -136,7 +136,7 @@ public:
         
     }
 
-//! Função responsável por devolver o elemento na posicao index.
+//! Funcao responsavel por devolver o elemento na posicao index.
 /*!
 *   Devolve o elemento na posicao solicitada, e caso a mesma nao esteja correta lanca uma excecao. 
 *   \param index posicao a qual sera usada para retornar o elemento.
@@ -159,7 +159,7 @@ public:
         }
     }
 
-//! Função reponsável por retornar e retirar um elemento de uma posicao.
+//! Funcao reponsavel por retornar e retirar um elemento de uma posicao.
 /*!
 *   Retira um elemento da posicao que lhe foi solicitada e o retorna.
 *   \param index posicao na qual o elemento se encontra.
@@ -193,7 +193,7 @@ public:
         }
     }
 
-//! Função reponsável por retornar e retirar o ultimo elemento da lista.
+//! Funcao reponsavel por retornar e retirar o ultimo elemento da lista.
 /*!
 *   Retira o ultimo elemento da lista.
 *   \return o dado encontrado na ultima posicao da lista.
@@ -206,7 +206,7 @@ public:
             return pop(size()-1);
     }
 
-//! Função reponsável por retornar e retirar o primeiro elemento da lista.
+//! Funcao reponsavel por retornar e retirar o primeiro elemento da lista.
 /*!
 *   Retira o primeiro elemento da lista.
 *   \return o dado encontrado na primeira posicao da lista.
@@ -229,7 +229,7 @@ public:
         } 
     }
 
-//! Função reponsável por remover um dado da lista.
+//! Funcao reponsavel por remover um dado da lista.
 /*!
 *   Remove um dado da lista.
 *   \param data dado a ser removido.
@@ -247,20 +247,20 @@ public:
         } 
     }
 
-//! Função responsável por verificar se a lista está vazia.
+//! Funcao responsavel por verificar se a lista esta vazia.
 /*!
 *   Retorna true se a lista estiver vazia.
-*   \return uma variável booleana.
+*   \return uma variavel booleana.
 */
     bool empty() const {
         return size_ == 0;
     }
 
-//! Função responsável por verificar se um elemento existe no vetor.
+//! Funcao responsavel por verificar se um elemento existe no vetor.
 /*!
 *   Retorna true se o elemento realmente se encontra no vetor.
 *   \param data elemento a ser procurado na lista.
-*   \return uma variável booleana.
+*   \return uma variavel booleana.
 *   \sa size()
 */   
     bool contains(const T& data) const {
@@ -275,7 +275,7 @@ public:
         return false;
     }
 
-//! Função responsável por retornar a posicao de um elemento no vetor.
+//! Funcao responsavel por retornar a posicao de um elemento no vetor.
 /*!
 *   Retorna a posicao atual de um elemento no vetor.
 *   \param data elemento o qual se deseja saber a posicao.
@@ -294,7 +294,7 @@ public:
         
     }
 
-//! Função reponsável por retornar a quantidade de dados.
+//! Funcao reponsavel por retornar a quantidade de dados.
 /*!
 *   Retorna a quantidade de dados que se encontram na lista.
 *   \return um valor.
@@ -306,41 +306,81 @@ public:
 
     
 public:
+
+//! Classe Node para referenciar dado e proximo elemento na lista.
+/*!
+*   Na classe Node sao implementados os metodos basicos para a referencia de um dado T e ao proximo Node.
+*/
     class Node {
     public:
+
+//! Construtor.
+/*!
+*   Construtor que referencia o dado a ser guardado atraves de parametro.
+*   \param data dado que sera armazenado.
+*/
         Node(const T& data):
             data_{data}
         {}
 
+//! Construtor.
+/*!
+*   Construtor que referencia o dado a ser guardado e o proximo Node.
+*   \param data dado que sera armazenado.
+*   \param next ponteiro para o proximo Node.
+*/
         Node(const T& data, Node* next):
             data_{data},
             next_{next}
         {}
 
+/*!
+*   Retorna o dado que esta salvo.  
+*/
         T& data() {
             return data_;
         }
 
+/*!
+*   Retorna o dado que esta salvo.  
+*/
         const T& data() const {
             return data_;
         }
 
+
+/*!
+*   Retorna o proximo elemento.  
+*/
         Node* next() {
             return next_;
         }
 
+/*!
+*   Retorna o proximo elemento.  
+*/
         const Node* next() const {
             return next_;
         }
 
+/*!
+*   Recebe um ponteiro indicando qual sera o proximo Node.
+*   \param node.
+*/
         void next(Node* node) {
             next_ = node;
         }
+        
     private:
-        T data_;
-        Node* next_{nullptr};
+        T data_;                /*!< Dado contido. */
+        Node* next_{nullptr};   /*!< Proximo Node. */
     };
 
+
+/*!
+*   Retorna ultimo elemento da lista.
+*   \sa size()
+*/
     Node* end() {
         auto it = head;
         for (auto i = 1u; i < size(); ++i) {
@@ -349,8 +389,8 @@ public:
         return it;
     }
 
-    Node* head{nullptr};
-    std::size_t size_{0u};
+    Node* head{nullptr};    /*!< Elemento que contem a referencia para o primeiro elemento da lista. */
+    std::size_t size_{0u};  /*!< Tamanho da lista. */
 };
 
 }
