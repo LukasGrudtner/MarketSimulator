@@ -1,19 +1,20 @@
-
+﻿
 #ifndef STRUCTURES_LINKED_LIST_H
 #define STRUCTURES_LINKED_LIST_H
 
 #include <cstdint>
 #include <stdexcept> 
 
+
+namespace structures {
+
+template<typename T>
+
 //! Classe LinkedList para uma Lista.
 /*! 
 *   Na classe LinkedList, e implementado o funcionamento de uma lista
 *   atraves de Nodes que referenciam o proximo valor na lista e o dado na mesma.
 */
-
-namespace structures {
-
-template<typename T>
 class LinkedList {
 public:
 
@@ -32,7 +33,8 @@ public:
 *   \sa clear()
 */
     ~LinkedList() {
-        clear();    
+        clear();
+        delete(head);
     }
 
 //! Funcao reponsavel por limpar a lista.
@@ -63,7 +65,7 @@ public:
     \sa empty()
 */
     void push_front(const T& data) {
-        Node *novo = new Node(data);
+        Node* novo = new Node(data);
         
         if(novo == NULL)
             throw std::out_of_range("listaCheia");
@@ -83,17 +85,19 @@ public:
 *   \sa push_front(), size()
 */
     void insert(const T& data, std::size_t index) {
-        auto *novo = new Node(data);
+        Node *novo;
         Node *anterior;
+
         
-        if (novo == NULL)
-            throw std::out_of_range("listaCheia");
+        if(index > size() || index < 0)
+            throw std::out_of_range("posicaoInvalida");
         else{
-            if(index > size() || index < 0)
-                throw std::out_of_range("posicaoInvalida");
+            if(index == 0)
+                push_front(data);
             else{
-                if(index == 0)
-                    push_front(data);
+                novo = new Node(data);
+                if (novo == NULL)
+                    throw std::out_of_range("listaCheia");
                 else{
                     anterior = head->next();
                     for(int i = 0; i < index -1; i++){
@@ -186,7 +190,7 @@ public:
                 if (index+1 != size())
                     anterior->next(eliminar->next());
                 size_--;
-                free(eliminar);
+                delete(eliminar);
                 
                 return volta;
             }
@@ -223,7 +227,7 @@ public:
             if(size() != 1)
                 head->next(saiu->next());
             size_--;
-            free(saiu);
+            delete(saiu);
             
             return volta;
         } 
@@ -236,15 +240,16 @@ public:
 *   \sa empty(), contains(), pop(), find()
 */
     void remove(const T& data) {
-        if(empty())
-            throw std::out_of_range("listaVazia");
-        else{
-            if(contains(data)){
-                pop(find(data));  
-            }else{
-                throw std::out_of_range("dataNotFound");
-            }
-        } 
+       Node* anterior = head;
+       Node* atual = head->next();
+       
+       while(atual->data() != data){
+           anterior = anterior->next();
+           atual = atual->next();
+       }
+       anterior->next(atual->next());
+       delete(atual);
+       size_--;
     }
 
 //! Funcao responsavel por verificar se a lista esta vazia.
@@ -305,14 +310,14 @@ public:
     
 
     
-public:
+private:
 
 //! Classe Node para referenciar dado e proximo elemento na lista.
 /*!
 *   Na classe Node sao implementados os metodos basicos para a referencia de um dado T e ao proximo Node.
 */
-    class Node {
-    public:
+class Node {
+public:
 
 //! Construtor.
 /*!
