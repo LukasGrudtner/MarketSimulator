@@ -1,8 +1,6 @@
 #include <cstdint>
 #include <stdexcept> 
 
-#include <iostream>
-
 namespace structures {
 
 template<typename T>
@@ -32,7 +30,7 @@ public:
 */
     ~LinkedQueue(){
         clear();
-        delete(head);
+        delete head;
     }
 
 //! Funcao reponsavel por limpar a fila.
@@ -80,7 +78,7 @@ public:
             if(size() != 1)
                 head->next(saiu->next());
             size_--;
-            delete(saiu);
+            delete saiu;
             
             return volta;
         } 

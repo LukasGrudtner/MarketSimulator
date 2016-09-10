@@ -29,7 +29,7 @@ public:
 */    
     ~DoublyLinkedList(){
         clear();
-        delete(head);
+        delete head;
     }
     
 //! Funcao reponsavel por limpar a lista.
@@ -169,7 +169,7 @@ public:
                 if(eliminar->next() != NULL)
                     eliminar->next()->prev(anterior);
                 size_--;
-                delete(eliminar);
+                delete eliminar;
                 
                 return volta;
             }
@@ -208,7 +208,7 @@ public:
             if(size() != 1)
                 head->next(saiu->next());
             size_--;
-            delete(saiu);
+            delete saiu;
             
             return volta;
         } 

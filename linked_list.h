@@ -1,5 +1,4 @@
-﻿
-#ifndef STRUCTURES_LINKED_LIST_H
+﻿#ifndef STRUCTURES_LINKED_LIST_H
 #define STRUCTURES_LINKED_LIST_H
 
 #include <cstdint>
@@ -34,7 +33,7 @@ public:
 */
     ~LinkedList() {
         clear();
-        delete(head);
+        delete head;
     }
 
 //! Funcao reponsavel por limpar a lista.
@@ -190,7 +189,7 @@ public:
                 if (index+1 != size())
                     anterior->next(eliminar->next());
                 size_--;
-                delete(eliminar);
+                delete eliminar;
                 
                 return volta;
             }
@@ -227,7 +226,7 @@ public:
             if(size() != 1)
                 head->next(saiu->next());
             size_--;
-            delete(saiu);
+            delete saiu;
             
             return volta;
         } 
@@ -248,7 +247,7 @@ public:
            atual = atual->next();
        }
        anterior->next(atual->next());
-       delete(atual);
+       delete atual;
        size_--;
     }
 

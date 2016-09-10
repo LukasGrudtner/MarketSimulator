@@ -1,4 +1,4 @@
-#include <cstdint>
+﻿#include <cstdint>
 #include <stdexcept> 
 
 namespace structures {
@@ -29,7 +29,7 @@ public:
 */
     ~LinkedStack() {
         clear();
-        delete(top_);
+        delete top_;
     }
 
 //! Funcao reponsavel por limpar a pilha.
@@ -53,7 +53,7 @@ public:
         Node* novo = new Node(data);
         
         if(novo == NULL)
-            throw std::out_of_range("listaCheia");
+            throw std::out_of_range("pilhaCheia");
         else{
             if(!empty())
                 novo->next(top_->next());
@@ -71,14 +71,14 @@ public:
         Node *saiu;
         T volta;
         if(empty())
-            throw std::out_of_range("listaVazia");
+            throw std::out_of_range("pilhaVazia");
         else{
             saiu = top_->next();
             volta = saiu->data();
             if(size() != 1)
                 top_->next(saiu->next());
             size_--;
-            delete(saiu);
+            delete saiu;
             
             return volta;
         } 
@@ -114,7 +114,7 @@ public:
 
 private:
 
-//! Classe Node para referenciar dado e proximo elemento na lista.
+//! Classe Node para referenciar dado e proximo elemento na pilha.
 /*!
 *   Na classe Node sao implementados os metodos basicos para a referencia de um dado T e ao proximo Node.
 */
