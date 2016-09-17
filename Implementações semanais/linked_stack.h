@@ -1,5 +1,12 @@
-﻿#include <cstdint>
-#include <stdexcept> 
+//! Descrição do arquivo
+/*!
+ *  \author Luiz Baroncello
+ *  \since 13/09/2016
+ *  \version 1.0
+ *  \copyright General Public License version 2
+ */
+#include <cstdint>
+#include <stdexcept>
 
 namespace structures {
 
@@ -10,18 +17,17 @@ template<typename T>
 *   Na classe LinkedStack, e implementado o funcionamento de uma pilha
 *   encadeada.
 */
-class LinkedStack{
-public:
-
+class LinkedStack {
+ public:
 //! Construtor.
 /*!
 *   Construtor que inicializa o elemento top_ que sera usado como topo para a pilha.
 */
-    LinkedStack(){
+    LinkedStack() {
         top_ = new Node(0u);
         size_ = 0;
     }
-    
+
 //! Destrutor.
 /*!
 *   Deleta todos os elementos da pilha.
@@ -38,7 +44,7 @@ public:
 *   \sa empty(), pop()
 */
     void clear() {
-        while(!empty()){
+        while (!empty()) {
             pop();
         }
     }
@@ -51,11 +57,11 @@ public:
 */
     void push(const T& data) {
         Node* novo = new Node(data);
-        
-        if(novo == NULL)
+
+        if (novo == NULL) {
             throw std::out_of_range("pilhaCheia");
-        else{
-            if(!empty())
+        } else {
+            if (!empty())
                 novo->next(top_->next());
             top_->next(novo);
             size_++;
@@ -70,28 +76,26 @@ public:
     T pop() {
         Node *saiu;
         T volta;
-        if(empty())
+        if (empty()) {
             throw std::out_of_range("pilhaVazia");
-        else{
+        } else {
             saiu = top_->next();
             volta = saiu->data();
-            if(size() != 1)
+            if (size() != 1)
                 top_->next(saiu->next());
             size_--;
             delete saiu;
-            
             return volta;
-        } 
+        }
     }
-    
 /*!
 *   \return Retorna o elemento no topo da pilha.
 */
-    T& top() const{
+    T& top() const {
         if (empty())
             throw std::out_of_range("pilhaVazia");
         else
-            return top_->next()->data();   
+            return top_->next()->data();
     }
 
 //! Funcao responsavel por verificar se a pilha esta vazia.
@@ -99,7 +103,7 @@ public:
 *   Retorna true se a pilha estiver vazia.
 *   \return uma variavel booleana.
 */
-    bool empty() const{
+    bool empty() const {
         return size_ == 0;
     }
 
@@ -108,27 +112,25 @@ public:
 *   Retorna a quantidade de dados que se encontram na pilha.
 *   \return um valor.
 */
-    std::size_t size() const{
+    std::size_t size() const {
         return size_;
     }
 
-private:
-
+ private:
 //! Classe Node para referenciar dado e proximo elemento na pilha.
 /*!
 *   Na classe Node sao implementados os metodos basicos para a referencia de um dado T e ao proximo Node.
 */
 class Node {
-public:
-
+ public:
 //! Construtor.
 /*!
 *   Construtor que referencia o dado a ser guardado atraves de parametro.
 *   \param data dado que sera armazenado.
 */
-        Node(const T& data):
-            data_{data}
-        {}
+    explicit Node(const T& data):
+        data_{data}
+    {}
 
 //! Construtor.
 /*!
@@ -136,55 +138,55 @@ public:
 *   \param data dado que sera armazenado.
 *   \param next ponteiro para o proximo Node.
 */
-        Node(const T& data, Node* next):
-            data_{data},
-            next_{next}
-        {}
+    Node(const T& data, Node* next):
+        data_{data},
+        next_{next}
+    {}
 
 /*!
 *   Retorna o dado que esta salvo.  
 */
-        T& data() {
-            return data_;
-        }
+    T& data() {
+        return data_;
+    }
 
 /*!
 *   Retorna o dado que esta salvo.  
 */
-        const T& data() const {
-            return data_;
-        }
+    const T& data() const {
+        return data_;
+    }
 
 
 /*!
 *   Retorna o proximo elemento.  
 */
-        Node* next() {
-            return next_;
-        }
+    Node* next() {
+        return next_;
+    }
 
 /*!
 *   Retorna o proximo elemento.  
 */
-        const Node* next() const {
-            return next_;
-        }
+    const Node* next() const {
+        return next_;
+    }
 
 /*!
 *   Recebe um ponteiro indicando qual sera o proximo Node.
 *   \param node.
 */
-        void next(Node* node) {
-            next_ = node;
-        }
-        
-    private:
-        T data_;                /*!< Dado contido. */
-        Node* next_{nullptr};   /*!< Proximo Node. */
-    };
+    void next(Node* node) {
+        next_ = node;
+    }
+
+ private:
+    T data_;                /*!< Dado contido. */
+    Node* next_{nullptr};   /*!< Proximo Node. */
+};
 
     Node* top_;          /*!< Indica posicao do ultimo elemento da pilha. */
     std::size_t size_;   /*!< Indica tamanho da pilha. */
 };
 
-}
+}  // namespace structures

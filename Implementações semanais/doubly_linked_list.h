@@ -1,5 +1,14 @@
+//! Descri√ß√£o do arquivo
+/*!
+ *  \author Luiz Baroncello
+ *  \since 13/09/2016
+ *  \version 1.0
+ *  \copyright General Public License version 2
+ */
+#define STRUCTURES_DOUBLY_LINKED_LIST_H
+
 #include <cstdint>
-#include <stdexcept> 
+#include <stdexcept>
 
 namespace structures {
 
@@ -11,13 +20,12 @@ template<typename T>
 *   atraves de Nodes que referenciam o proximo valor e o valor anterior na lista e o dado na mesma.
 */
 class DoublyLinkedList {
-public:
-
+ public:
 //! Construtor.
 /*!
-*   Construtor que inicializa o elemento head que sera usado como cabeÁa para a lista.
+*   Construtor que inicializa o elemento head que sera usado como cabe√ßa para a lista.
 */
-    DoublyLinkedList(){
+    DoublyLinkedList() {
         head = new Node(0u);
         size_ = 0;
     }
@@ -27,18 +35,18 @@ public:
 *   Deleta todos os elementos da lista.
 *   \sa clear()
 */    
-    ~DoublyLinkedList(){
+    ~DoublyLinkedList() {
         clear();
         delete head;
     }
-    
+
 //! Funcao reponsavel por limpar a lista.
 /*!
 *   Faz com que a lista seja limpa.
 *   \sa empty(), pop_front()
 */
-    void clear(){
-        while(!empty()){
+    void clear() {
+        while (!empty()) {
             pop_front();
         }
     }
@@ -52,8 +60,8 @@ public:
     void push_back(const T& data) {
         insert(data, size());
     }
-    
-//! FunÁ„o reponsavel por adicionar um elemento no inicio da lista.
+
+//! Fun√ß√£o reponsavel por adicionar um elemento no inicio da lista.
 /*!
 *   Adiciona um elemento no inicio da lista.
 *   \param data dado a ser adicionado no inicio da lista. 
@@ -61,13 +69,13 @@ public:
 */
     void push_front(const T& data) {
         Node* novo = new Node(data);
-        
-        if(novo == NULL){
+
+        if (novo == NULL) {
             throw std::out_of_range("listaCheia");
-        }else{
-            if(!empty()){
+        } else {
+            if (!empty()) {
                 novo->next(head->next());
-                novo->next()->prev(novo);          //wtf             
+                novo->next()->prev(novo);
             }
             head->next(novo);
             size_++;
@@ -85,22 +93,21 @@ public:
         Node *novo;
         Node *anterior;
 
-        
-        if(index > size() || index < 0)
+        if (index > size() || index < 0) {
             throw std::out_of_range("posicaoInvalida");
-        else{
-            if(index == 0)
+        } else {
+            if (index == 0) {
                 push_front(data);
-            else{
+            } else {
                 novo = new Node(data);
-                if (novo == NULL)
+                if (novo == NULL) {
                     throw std::out_of_range("listaCheia");
-                else{
+                } else {
                     anterior = head->next();
-                    for(int i = 0; i < index -1; i++){
-                        anterior = anterior->next();  
+                    for (int i = 0; i < index -1; i++) {
+                        anterior = anterior->next();
                     }
-                    if (index != size()){
+                    if (index != size()) {
                         novo->next(anterior->next());
                         novo->next()->prev(novo);
                     }
@@ -121,23 +128,22 @@ public:
     void insert_sorted(const T& data) {
         Node *atual;
         int posicao;
-        
-        if(empty())
+
+        if (empty()) {
             push_front(data);
-        else{
-          atual = head->next();  
+        } else {
+          atual = head->next();
           posicao = 0;
-          while(atual->next() != NULL  && data > atual->data() && posicao < size()-1){
+          while (atual->next() != NULL  && data > atual->data() &&
+                posicao < size()-1) {
               atual = atual->next();
               posicao++;
           }
-          
-            if(data > atual->data())
+            if (data > atual->data())
                 insert(data, posicao+1);
             else
                 insert(data, posicao);
         }
-        
     }
 
 //! Funcao reponsavel por retornar e retirar um elemento de uma posicao.
@@ -152,30 +158,30 @@ public:
         Node* eliminar;
         T volta;
 
-        if(index > size()-1 || index < 0)
+        if (index > size()-1 || index < 0) {
             throw std::out_of_range("posicaoInvalida");
-        else{
-            if(index == 0)
+        } else {
+            if (index == 0) {
                 return pop_front();
-            else{
+            } else {
                 anterior = head->next();
-                for(int i = 0; i < index -1; i++){
-                    anterior = anterior->next();  
+                for (int i = 0; i < index -1; i++) {
+                    anterior = anterior->next();
                 }
                 eliminar = anterior->next();
                 volta = eliminar->data();
                 if (index+1 != size())
                     anterior->next(eliminar->next());
-                if(eliminar->next() != NULL)
+                if (eliminar->next() != NULL) {
                     eliminar->next()->prev(anterior);
+                }
                 size_--;
-                delete eliminar;
-                
+                delete(eliminar);
                 return volta;
             }
         }
     }
-    
+
 //! Funcao reponsavel por retornar e retirar o ultimo elemento da lista.
 /*!
 *   Retira o ultimo elemento da lista.
@@ -188,7 +194,6 @@ public:
         else
             return pop(size()-1);
     }
-    
 
 //! Funcao reponsavel por retornar e retirar o primeiro elemento da lista.
 /*!
@@ -199,34 +204,34 @@ public:
     T pop_front() {
         Node *saiu;
         T volta;
-        
-        if(empty())
+
+        if (empty()) {
             throw std::out_of_range("listaVazia");
-        else{
+        } else {
             saiu = head->next();
             volta = saiu->data();
-            if(size() != 1)
+            if (size() != 1)
                 head->next(saiu->next());
             size_--;
             delete saiu;
-            
+
             return volta;
-        } 
+        }
     }
 
-//! FunÁ„o repons·vel por remover um dado da lista.
+//! Fun√ß√£o repons√°vel por remover um dado da lista.
 /*!
 *   Remove um dado da lista.
 *   \param data dado a ser removido.
 *   \sa empty(), contains(), pop(), find()
 */
-    void remove(T data){
-        if(empty())
+    void remove(T data) {
+        if (empty()) {
             throw std::out_of_range("listaVazia");
-        else{
-            if(contains(data)){
-                pop(find(data));  
-            }else{
+        } else {
+            if (contains(data)) {
+                pop(find(data));
+            } else {
                 throw std::out_of_range("dataNotFound");
             }
         }
@@ -240,7 +245,7 @@ public:
     bool empty() const {
         return size_ == 0;
     }
-    
+
 //! Funcao responsavel por verificar se um elemento existe no vetor.
 /*!
 *   Retorna true se o elemento realmente se encontra no vetor.
@@ -250,10 +255,10 @@ public:
 */   
     bool contains(const T& data) const {
         auto *dado = head;
-        
-        for(int i = 0; i < size(); i++){
+
+        for (int i = 0; i < size(); i++) {
             dado = dado->next();
-            if(data == dado->data()){
+            if (data == dado->data()) {
                 return true;
             }
         }
@@ -269,14 +274,14 @@ public:
 */
     T& at(std::size_t index) {
         Node *dado = head->next();
-        
-        if (empty())
+
+        if (empty()) {
             throw std::out_of_range("listaVazia");
-        else{
-            if(index > size() || index < 0)
+        } else {
+            if (index > size() || index < 0) {
                 throw std::out_of_range("posicaoInvalida");
-            else{
-                for(int i = 0; i < index; i++){
+            } else {
+                for (int i = 0; i < index; i++) {
                     dado = dado->next();
                 }
                 return dado->data();
@@ -291,22 +296,22 @@ public:
 *   \return o elemento correspondente a posicao.
 *   \sa empty(), size()
 */    
-    const T& at(std::size_t index) const{
+    const T& at(std::size_t index) const {
         Node *dado = head->next();
-        if (empty())
+        if (empty()) {
             throw std::out_of_range("listaVazia");
-        else{
-            if(index > size() || index < 0)
+        } else {
+            if (index > size() || index < 0) {
                 throw std::out_of_range("posicaoInvalida");
-            else{
-                for(int i = 0; i < index; i++){
+            } else {
+                for (int i = 0; i < index; i++) {
                     dado = dado->next();
                 }
                 return dado->data();
             }
         }
     }
-    
+
 //! Funcao responsavel por retornar a posicao de um elemento no vetor.
 /*!
 *   Retorna a posicao atual de um elemento no vetor.
@@ -316,16 +321,15 @@ public:
 */    
     std::size_t find(const T& data) const {
         auto *dado = head;
-        
-        for(int i = 0; i < size(); i++){
+
+        for (int i = 0; i < size(); i++) {
             dado = dado->next();
-            if(data == dado->data())
+            if (data == dado->data())
                 return i;
         }
         return size();
-        
     }
-    
+
 //! Funcao responsavel por retornar a posicao de um elemento no vetor.
 /*!
 *   Retorna a posicao atual de um elemento no vetor.
@@ -333,38 +337,37 @@ public:
 *   \return um inteiro.
 *   \sa size()
 */      
-    std::size_t size() const{
+    std::size_t size() const {
         return size_;
     }
-private:
 
-//! Classe Node para referenciar dado, proximo elemento e elemento anterior na lista.
+ private:
+//! Classe Node para referenciar dado, proximo e anterior na lista.
 /*!
-*   Na classe Node sao implementados os metodos basicos para a referencia de um dado T, o prÛximo Node e o Node anterior.
+*   Na classe Node sao implementados os metodos basicos para a referencia de um dado T, o pr√≥ximo Node e o Node anterior.
 */
-    class Node {
-    public:
-    
+class Node {
+ public:
 //! Construtor.
 /*!
 *   Construtor que referencia o dado a ser guardado atraves de parametro.
 *   \param data dado que sera armazenado.
 */
-        Node(const T& data):
-            data_{data}
-        {}
-        
+    explicit Node(const T& data):
+        data_{data}
+    {}
+
 //! Construtor.
 /*!
 *   Construtor que referencia o dado a ser guardado e o proximo Node.
 *   \param data dado que sera armazenado.
 *   \param next ponteiro para o proximo Node.
 */
-        Node(const T& data, Node* next):
-            data_{data},
-            next_{next}
-        {}
-        
+    Node(const T& data, Node* next):
+        data_{data},
+        next_{next}
+    {}
+
 //! Construtor.
 /*!
 *   Construtor que referencia o dado a ser guardado, o proximo Node e o Node anterior.
@@ -372,77 +375,78 @@ private:
 *   \param next ponteiro para o proximo Node.
 *   \param prev ponteiro para o Node anterior
 */
-        Node(const T& data, Node* prev, Node* next):
-            data_{data},
-            next_{next},
-            prev_{prev}
-        {}
+    Node(const T& data, Node* prev, Node* next):
+        data_{data},
+        next_{next},
+        prev_{prev}
+    {}
 
 /*!
 *   Retorna o dado que esta salvo.  
 */
-        T& data(){
-            return data_;
-        }
-        
+    T& data() {
+        return data_;
+    }
+
 /*!
 *   Retorna o dado que esta salvo.  
 */
-        const T& data() const{
-            return data_;
-        }
+    const T& data() const {
+        return data_;
+    }
 
 /*!
 *   Retorna o Node anterior ao atual.  
 */
-        Node* prev(){
-            return prev_;
-        }
-        
+    Node* prev() {
+        return prev_;
+    }
+
 /*!
 *   Retorna o Node anterior ao atual.  
 */
-        const Node* prev() const{
-            return prev_;
-        }
+    const Node* prev() const {
+        return prev_;
+    }
 
 /*!
 *   Recebe um ponteiro indicando qual sera o Node anterior.
 *   \param node.
 */
-        void prev(Node* node){
-            prev_ = node;
-        }
+    void prev(Node* node) {
+        prev_ = node;
+    }
 
 /*!
 *   Retorna o proximo Node.  
 */
-        Node* next(){
-            return next_;
-        }
-        
+    Node* next() {
+        return next_;
+    }
+
 /*!
 *   Retorna o proximo Node.  
 */
-        const Node* next() const{
-            return next_;
-        }
+    const Node* next() const {
+        return next_;
+    }
 
 /*!
 *   Recebe um ponteiro indicando qual sera o proximo Node.
 *   \param node.
 */
-        void next(Node* node){
-            next_ = node;
-        }
-    private:
+    void next(Node* node) {
+        next_ = node;
+    }
+
+ private:
         T data_;         /*!< Dado contido. */
         Node* prev_;     /*!< Node anterior. */
         Node* next_;     /*!< Proximo Node. */
-    };
+};
 
-    Node* head;         /*!< Elemento que contem a referencia para o primeiro elemento da lista. */
+    Node* head;         /*!< Referencia para primeiro elemento na lista. */
     std::size_t size_;  /*!< Tamanho da lista. */
 };
 
-}
+}  // namespace structures
