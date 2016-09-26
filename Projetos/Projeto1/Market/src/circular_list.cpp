@@ -11,6 +11,8 @@ circular_list::circular_list()
 circular_list::~circular_list()
 {
     clear();
+    smaller_queue = 0u;
+    smaller_amount_of_products = 0u;
     delete head;
 }
 
