@@ -5,10 +5,8 @@
 class Performance
 {
     public:
-        virtual Performance() = 0;
-        virtual ~Performance() = 0;
-        virtual unsigned int time_to_spend_item() = 0;
-        virtual unsigned int time_to_spend_card() = 0;
+        unsigned int time_to_spend_item();
+        unsigned int time_to_spend_card();
 
     protected:
 

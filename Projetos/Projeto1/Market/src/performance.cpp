@@ -1,11 +1,2 @@
-#include "performance.h"
+#include "../include/bad_performance.h"
 
-Performance::Performance()
-{
-    //ctor
-}
-
-Performance::~Performance()
-{
-    //dtor
-}

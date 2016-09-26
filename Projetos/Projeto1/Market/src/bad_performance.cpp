@@ -1,9 +1,5 @@
-#include "bad_performance.h"
-
-BadPerformance::BadPerformance()
-{
-
-}
+#include "../include/bad_performance.h"
+#include <iostream>
 
 BadPerformance::~BadPerformance()
 {

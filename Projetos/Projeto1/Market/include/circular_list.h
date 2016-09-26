@@ -2,6 +2,9 @@
 #define CIRCULAR_LIST_H
 
 #include <cstdint>
+#include <stdexcept>
+
+using namespace std;
 
 template <typename T>
 
@@ -9,7 +12,6 @@ class circular_list
 {
  public:
         CircularList();
-        ~CircularList();
 
         void clear();
 

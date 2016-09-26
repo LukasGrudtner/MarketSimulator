@@ -3,15 +3,19 @@
 
 #include "performance.h"
 
-class BadPerformance : private Performance
+class BadPerformance : public Performance
 {
     public:
-        BadPerformance();
+        BadPerformance() : Performance()
+        {}
         virtual ~BadPerformance();
+        int time_to_spend_item();
+        int time_to_spend_card();
 
     protected:
 
     private:
+
 
 };
 
