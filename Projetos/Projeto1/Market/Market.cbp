@@ -34,9 +34,19 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/card.h" />
+		<Unit filename="include/cash.h" />
 		<Unit filename="include/circular_list.h" />
+		<Unit filename="include/client.h" />
+		<Unit filename="include/market_box.h" />
+		<Unit filename="include/pay_type.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/card.cpp" />
+		<Unit filename="src/cash.cpp" />
 		<Unit filename="src/circular_list.cpp" />
+		<Unit filename="src/client.cpp" />
+		<Unit filename="src/market_box.cpp" />
+		<Unit filename="src/pay_type.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
