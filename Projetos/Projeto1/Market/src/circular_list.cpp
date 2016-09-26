@@ -218,13 +218,3 @@ std::size_t circular_list::size() const
 {
     return size_;
 }
-
-std::size_t circular_list::smaller_queue() const
-{
-    return smaller_queue;
-}
-
-std::size_t circular_list::smaller_amount_of_products() const
-{
-    return smaller_amount_of_products;
-}

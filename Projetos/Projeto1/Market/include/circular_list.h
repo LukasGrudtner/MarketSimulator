@@ -109,9 +109,6 @@ class Node {
 
         Node* head;
         std::size_t size_;
-        std::size_t smaller_queue;
-        std::size_t smaller_amount_of_products;
-
 };
 
 #endif // CIRCULAR_LIST_H
