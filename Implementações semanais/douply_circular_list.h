@@ -75,9 +75,11 @@ class DoublyLinkedList {
         } else {
             if (!empty()) {
                 novo->next(head->next());
-                novo->prev(novo->next()->prev());
                 novo->next()->prev(novo);
+            } else {
+                novo->next(head);
             }
+            novo->prev(head);
             head->next(novo);
             size_++;
         }
@@ -176,10 +178,10 @@ class DoublyLinkedList {
                 volta = eliminar->data();
                 if (index+1 != size()) {
                     anterior->next(eliminar->next());
-                }
                 eliminar->next()->prev(anterior);
+                }
                 size_--;
-                delete(eliminar);
+                delete eliminar;
                 return volta;
             }
         }

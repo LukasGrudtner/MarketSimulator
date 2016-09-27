@@ -19,13 +19,13 @@ class circular_list
         /*!
         *   Construtor.
         */
-        CircularList();
+        circular_list();
 
         /*!
         *   Destrutor.
         *   \sa clear()
         */
-        ~CircularList();
+        ~circular_list();
 
         /*!
         *   Limpa a lista.
