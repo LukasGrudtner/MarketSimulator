@@ -102,3 +102,30 @@
 
 1475086513 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\time.h
 
+1475087261 source:c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\main.cpp
+	<iostream>
+	<stdio.h>
+	"performance.h"
+
+1475087261 c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\include\performance.h
+
+1475087262 source:c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\src\circular_list.cpp
+	"circular_list.h"
+
+1475087261 c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\include\circular_list.h
+	<cstdint>
+	<stdexcept>
+
+1474913454 source:c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\src\client.cpp
+	"client.h"
+
+1475087261 c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\include\client.h
+
+1474913454 source:c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\src\market_box.cpp
+	"market_box.h"
+
+1475087261 c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\include\market_box.h
+
+1475087262 source:c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\src\performance.cpp
+	"performance.h"
+
