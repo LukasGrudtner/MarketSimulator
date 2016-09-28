@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1475095658 source:c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\main.cpp
+1475098631 source:c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\main.cpp
 	<iostream>
 	<stdio.h>
 	"performance.h"
 	"lukas.h"
 	"TestLuiz.h"
+	<iostream>
 
 1474923053 source:c:\users\patricia\desktop\estrutura-de-dados-master\projetos\projeto1\market\main.cpp
 	<iostream>
@@ -76,11 +77,10 @@
 1474978128 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\cash.h
 	"pay_type.h"
 
-1475092882 source:c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\src\circular_list.cpp
+1475096574 source:c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\src\circular_list.cpp
 	"circular_list.h"
-	<iostream>
 
-1475092557 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\circular_list.h
+1475096877 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\circular_list.h
 	<cstdint>
 	<stdexcept>
 	"market_box.h"
@@ -93,7 +93,7 @@
 1475093434 source:c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\src\market_box.cpp
 	"market_box.h"
 
-1475094792 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\market_box.h
+1475098939 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\market_box.h
 	"linked_queue.h"
 	<string>
 
@@ -163,12 +163,12 @@
 1475094476 source:c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\src\linked_queue.cpp
 	"linked_queue.h"
 
-1475094476 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\lukas.h
+1475097224 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\lukas.h
 	"linked_queue.h"
 	<iostream>
 	"client.h"
 
-1475095764 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\testluiz.h
+1475096877 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\testluiz.h
 	<iostream>
 	"performance.h"
 	"clock.h"
