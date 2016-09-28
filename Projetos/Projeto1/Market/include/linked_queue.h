@@ -1,10 +1,11 @@
 #ifndef LINKEDQUEUE_H
 #define LINKEDQUEUE_H
 
+#include "client.h"
 #include <cstdint>
 #include <stdexcept>
 
-template<typename T>
+//template<typename T>
 
 //! Classe LinkedQueue
 /*! A classe implementa a estrutura de fila encadeada, onde o tamanho é dinâmico,
@@ -27,23 +28,23 @@ class LinkedQueue
         /*! Insere elementos no fim da fila encadeada.
             \param data um dado para ser inserido na fila.
         */
-        void enqueue(const T& data);
+        void enqueue(const Client& data);
 
         //! Dequeue
         /*! Remove elementos no início da fila encadeada; */
-        T dequeue();
+        Client dequeue();
 
         //! Front
         /*! Retorna o elemento no início da fila.
             \return um dado do tipo T guardado no elemento da frente.
         */
-        T& front() const;
+        Client& front() const;
 
         //! Back
         /*! Retorna o elemento no final da fila.
             \return um dado do tipo T guardado no elemento do fim.
         */
-        T& back() const;
+        Client& back() const;
 
         //! Empty
         /*! Verifica se a fila está vazia.
@@ -68,11 +69,14 @@ class LinkedQueue
         onde cada node possui um atributo de dado e um ponteiro para o próximo elemento. */
         class Node {  // Elemento
         public:
+            Node()
+            {}
+
             //! Construtor
             /*! Método construtor da classe Node com um parâmetro de dados.
                 /param data dado a ser inserido no Node.
             */
-            explicit Node(const T& data):
+            explicit Node(const Client& data):
                 data_{data}
             {}
 
@@ -81,7 +85,7 @@ class LinkedQueue
                 /param data dado a ser inserido no Node.
                 /param next ponteiro para o próximo Node.
             */
-            Node(const T& data, Node* next):
+            Node(const Client& data, Node* next):
                 data_{data},
                 next_{next}
             {}
@@ -89,14 +93,14 @@ class LinkedQueue
             /*! Método getter de um Node.
                 /return o dado do elemento.
             */
-            T& data() {
+            Client& data() {
                 return data_;
             }
             //! Data Const
             /*! Método getter de um Node, onde o dado retornado não será alterado.
                 /return o dado do elemento.
             */
-            const T& data() const {
+            const Client& data() const {
                 return data_;
             }
 
@@ -124,7 +128,7 @@ class LinkedQueue
             }
 
          private:
-            T data_; /**< Declaração do dado, do tipo T. */
+            Client data_; /**< Declaração do dado, do tipo T. */
             Node* next_{nullptr}; /**< Declaração do próximo Node. */
         };
 

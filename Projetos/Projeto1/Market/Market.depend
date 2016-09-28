@@ -102,10 +102,11 @@
 
 1475086513 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\time.h
 
-1475087261 source:c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\main.cpp
+1475091251 source:c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\main.cpp
 	<iostream>
 	<stdio.h>
 	"performance.h"
+	"lukas.h"
 
 1475087261 c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\include\performance.h
 
@@ -128,4 +129,17 @@
 
 1475087262 source:c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\src\performance.cpp
 	"performance.h"
+
+1475093739 c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\include\lukas.h
+	"linked_queue.h"
+	<iostream>
+	"client.h"
+
+1475092572 c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\include\linked_queue.h
+	"client.h"
+	<cstdint>
+	<stdexcept>
+
+1475092572 source:c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\src\linked_queue.cpp
+	"linked_queue.h"
 

@@ -1,31 +1,31 @@
 #include "linked_queue.h"
 
-template<typename T>
-LinkedQueue<T>::LinkedQueue()
+//template<typename T>
+LinkedQueue::LinkedQueue()
 {
-    head = new Node(0u);
+    head = new Node();
     tail = NULL;
     num_people = 0u;
     num_products = 0u;
 }
 
-template<typename T>
-LinkedQueue<T>::~LinkedQueue()
+//template<typename T>
+LinkedQueue::~LinkedQueue()
 {
     clear();
     delete head;
 }
 
-template<typename T>
-void LinkedQueue<T>::clear()
+//template<typename T>
+void LinkedQueue::clear()
 {
     while (!empty()) {
         dequeue();
     }
 }
 
-template<typename T>
-void LinkedQueue<T>::enqueue(const T& data)
+//template<typename T>
+void LinkedQueue::enqueue(const Client& data)
 {
     Node* novo = new Node(data);
     if (novo == NULL) {
@@ -41,11 +41,11 @@ void LinkedQueue<T>::enqueue(const T& data)
     }
 }
 
-template<typename T>
-T LinkedQueue<T>::dequeue()
+//template<typename T>
+Client LinkedQueue::dequeue()
 {
     Node* eliminar;
-    T volta;
+    Client volta;
     if (empty()) {
         throw std::out_of_range("Erro Fila Vazia!");
     } else {
@@ -58,8 +58,8 @@ T LinkedQueue<T>::dequeue()
     return volta;
 }
 
-template<typename T>
-T& LinkedQueue<T>::front() const
+//template<typename T>
+Client& LinkedQueue::front() const
 {
     if (empty()) {
         throw std::out_of_range("Erro Fila Vazia!");
@@ -67,8 +67,8 @@ T& LinkedQueue<T>::front() const
     return head->next()->data();
 }
 
-template<typename T>
-T& LinkedQueue<T>::back() const
+//template<typename T>
+Client& LinkedQueue::back() const
 {
     if (empty()) {
         throw std::out_of_range("Erro Fila Vazia!");
@@ -76,20 +76,20 @@ T& LinkedQueue<T>::back() const
     return tail->data();
 }
 
-template<typename T>
-bool LinkedQueue<T>::empty() const
+//template<typename T>
+bool LinkedQueue::empty() const
 {
     return (num_people == 0);
 }
 
-template<typename T>
-size_t LinkedQueue<T>::num_people_proc()
+//template<typename T>
+size_t LinkedQueue::num_people_proc()
 {
     return num_people;
 }
 
-template<typename T>
-size_t LinkedQueue<T>::num_products_proc()
+//template<typename T>
+size_t LinkedQueue::num_products_proc()
 {
     return num_products;
 }

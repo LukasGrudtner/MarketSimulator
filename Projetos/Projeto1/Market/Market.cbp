@@ -35,63 +35,34 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/bad_performance.h">
-			<Option virtualFolder="model/box/" />
-		</Unit>
-		<Unit filename="include/card.h">
-			<Option virtualFolder="model/client/" />
-		</Unit>
-		<Unit filename="include/cash.h">
-			<Option virtualFolder="model/client/" />
-		</Unit>
 		<Unit filename="include/circular_list.h">
 			<Option virtualFolder="model/structures/" />
 		</Unit>
 		<Unit filename="include/client.h">
 			<Option virtualFolder="model/client/" />
 		</Unit>
-		<Unit filename="include/high_performance.h">
-			<Option virtualFolder="model/box/" />
+		<Unit filename="include/linked_queue.h">
+			<Option virtualFolder="model/structures/" />
 		</Unit>
+		<Unit filename="include/lukas.h" />
 		<Unit filename="include/market_box.h">
 			<Option virtualFolder="model/box/" />
-		</Unit>
-		<Unit filename="include/medium_performance.h">
-			<Option virtualFolder="model/box/" />
-		</Unit>
-		<Unit filename="include/pay_type.h">
-			<Option virtualFolder="model/client/" />
 		</Unit>
 		<Unit filename="include/performance.h">
 			<Option virtualFolder="model/box/" />
 		</Unit>
 		<Unit filename="main.cpp" />
-		<Unit filename="src/bad_performance.cpp">
-			<Option virtualFolder="model/box/" />
-		</Unit>
-		<Unit filename="src/card.cpp">
-			<Option virtualFolder="model/client/" />
-		</Unit>
-		<Unit filename="src/cash.cpp">
-			<Option virtualFolder="model/client/" />
-		</Unit>
 		<Unit filename="src/circular_list.cpp">
 			<Option virtualFolder="model/structures/" />
 		</Unit>
 		<Unit filename="src/client.cpp">
 			<Option virtualFolder="model/client/" />
 		</Unit>
-		<Unit filename="src/high_performance.cpp">
-			<Option virtualFolder="model/box/" />
+		<Unit filename="src/linked_queue.cpp">
+			<Option virtualFolder="model/structures/" />
 		</Unit>
 		<Unit filename="src/market_box.cpp">
 			<Option virtualFolder="model/box/" />
-		</Unit>
-		<Unit filename="src/medium_performance.cpp">
-			<Option virtualFolder="model/box/" />
-		</Unit>
-		<Unit filename="src/pay_type.cpp">
-			<Option virtualFolder="model/client/" />
 		</Unit>
 		<Unit filename="src/performance.cpp">
 			<Option virtualFolder="model/box/" />
