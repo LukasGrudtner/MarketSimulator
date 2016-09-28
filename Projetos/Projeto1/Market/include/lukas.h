@@ -3,6 +3,7 @@
 #include "linked_queue.h"
 #include <iostream>
 #include "client.h"
+#include "market_box.h"
 
 using namespace std;
 
@@ -11,14 +12,17 @@ class Lukas
     public:
         Lukas()
         {
-            lqueue = new LinkedQueue();
-            client = new Client();
-            Enqueue();
+            TESTLinkedQueue();
+            TESTMarketBox();
         }
         virtual ~Lukas(){}
 
-        Enqueue()
+        TESTLinkedQueue()
         {
+            cout << "===================LINKED QUEUE===================" << endl;
+            LinkedQueue* lqueue = new LinkedQueue();
+            Client* client = new Client();
+
             cout << "Empty | 1 = " << lqueue->empty() << endl;
             lqueue->enqueue(*client);
             cout << "Empty | 0 = " << lqueue->empty() << endl;
@@ -27,13 +31,20 @@ class Lukas
             lqueue->dequeue();
             lqueue->dequeue();
             cout << "Num People | 0 = " << lqueue->num_people_proc() << endl;
+            cout << "===================LINKED QUEUE===================\n" << endl;
+        }
+
+        TESTMarketBox()
+        {
+            cout << "===================MARKET BOX===================" << endl;
+            MarketBox* box = new MarketBox();
+            cout << "MarketBox initialized." << endl;
+            cout << "===================MARKET BOX===================" << endl;
         }
 
     protected:
 
     private:
-        LinkedQueue* lqueue;
-        Client* client;
 };
 
 #endif // LUKAS_H

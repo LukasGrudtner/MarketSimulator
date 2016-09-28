@@ -1,7 +1,9 @@
 #ifndef MARKETBOX_H
 #define MARKETBOX_H
 
+#include "performance.h"
 #include "linked_queue.h"
+#include "time.h"
 #include <string>
 
 class MarketBox
@@ -13,12 +15,12 @@ class MarketBox
     protected:
 
     private:
-        LinkedQueue client_queue;
+        LinkedQueue* client_queue;
         std::string identifier;
-        //Performance performance;
+        Performance* performance;
         unsigned int clients_in_queue;
         unsigned int clients_served;
-        // Time average_service_time;
+        Time* average_service_time;
         double total_billing;
         double average_billing;
 };
