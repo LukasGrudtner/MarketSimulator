@@ -2,24 +2,18 @@
 #include <stdio.h>
 #include "performance.h"
 #include "lukas.h"
+#include "TestLuiz.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "============Test1=============\n";
+//    Lukas* lk = new Lukas();
+    for (auto i = 0; i < 9000; i++) {
+        TestLuiz* testes = new TestLuiz();
+    }
 
-    Performance* teste = new Performance(60u, 4);
-
-    cout << "Tempo cartao: 60 = " << teste->get_time_to_spend_card() << "\n";
-    cout << "Tempo item: 4 = " << teste->get_time_to_spend_item() << "\n";
-
-    cout << "============Test2=============\n";
-
-    Lukas* lukas = new Lukas();
-
-
-
+ //   cout << "\n\n\n\n\n\n";
 
 
 }

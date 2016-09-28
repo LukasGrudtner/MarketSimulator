@@ -15,7 +15,7 @@ class MarketBox
     private:
         LinkedQueue client_queue;
         std::string identifier;
-        Performance performance;
+        //Performance performance;
         unsigned int clients_in_queue;
         unsigned int clients_served;
         // Time average_service_time;

@@ -10,7 +10,7 @@ class Performance
         *   \param time_to_spend_card tempo para passar um cartao.
         *   \param time_to_spend_item tempo para passar um item.
         */
-        Performance(const unsigned int& time_to_spend_card, const unsigned int time_to_spend_item);
+        Performance(const unsigned int& time_to_spend_card, const unsigned int& time_to_spend_item);
 
         /*!
         *   \return um inteiro correspondente ao tempo que o caixa demora para passar um item.

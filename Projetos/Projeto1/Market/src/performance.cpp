@@ -1,6 +1,6 @@
 #include "performance.h"
 
-Performance::Performance(const unsigned int& time_to_spend_card, const unsigned int time_to_spend_item)
+Performance::Performance(const unsigned int& time_to_spend_card, const unsigned int& time_to_spend_item)
 {
     time_to_spend_card_ = time_to_spend_card;
     time_to_spend_item_ = time_to_spend_item;
