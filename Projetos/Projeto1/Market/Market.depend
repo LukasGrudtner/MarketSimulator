@@ -117,11 +117,10 @@
 
 1475095832 c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\include\performance.h
 
-1475094205 source:c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\src\circular_list.cpp
+1475099492 source:c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\src\circular_list.cpp
 	"circular_list.h"
-	<iostream>
 
-1475094205 c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\include\circular_list.h
+1475099492 c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\include\circular_list.h
 	<cstdint>
 	<stdexcept>
 	"market_box.h"
@@ -134,9 +133,9 @@
 1475094205 source:c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\src\market_box.cpp
 	"market_box.h"
 
-1475097121 c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\include\market_box.h
-	"performance.h"
+1475099697 c:\users\lukas\documents\github\estrutura-de-dados\projetos\projeto1\market\include\market_box.h
 	"linked_queue.h"
+	"performance.h"
 	"time.h"
 	<string>
 

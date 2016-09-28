@@ -35,6 +35,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/TestLuiz.h" />
 		<Unit filename="include/circular_list.h">
 			<Option virtualFolder="model/structures/" />
 		</Unit>
