@@ -2,7 +2,7 @@
 
 MarketBox::MarketBox()
 {
-    //ctor
+
 }
 
 MarketBox::~MarketBox()
