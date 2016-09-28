@@ -42,6 +42,9 @@
 		<Unit filename="include/client.h">
 			<Option virtualFolder="model/client/" />
 		</Unit>
+		<Unit filename="include/clock.h">
+			<Option virtualFolder="model/market/" />
+		</Unit>
 		<Unit filename="include/linked_queue.h">
 			<Option virtualFolder="model/structures/" />
 		</Unit>
@@ -52,12 +55,18 @@
 		<Unit filename="include/performance.h">
 			<Option virtualFolder="model/box/" />
 		</Unit>
+		<Unit filename="include/time.h">
+			<Option virtualFolder="model/market/" />
+		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="src/circular_list.cpp">
 			<Option virtualFolder="model/structures/" />
 		</Unit>
 		<Unit filename="src/client.cpp">
 			<Option virtualFolder="model/client/" />
+		</Unit>
+		<Unit filename="src/clock.cpp">
+			<Option virtualFolder="model/market/" />
 		</Unit>
 		<Unit filename="src/linked_queue.cpp">
 			<Option virtualFolder="model/structures/" />
@@ -67,6 +76,9 @@
 		</Unit>
 		<Unit filename="src/performance.cpp">
 			<Option virtualFolder="model/box/" />
+		</Unit>
+		<Unit filename="src/time.cpp">
+			<Option virtualFolder="model/market/" />
 		</Unit>
 		<Extensions>
 			<code_completion />
