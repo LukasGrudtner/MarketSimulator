@@ -1,7 +1,5 @@
 #include "circular_list.h"
 
-#include <iostream>
-
 CircularList::CircularList()
 {
     size_ = 0u;

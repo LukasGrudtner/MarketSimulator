@@ -91,30 +91,10 @@ class CircularList
         MarketBox pop_front();
 
         /*!
-        *   Remove dado da lista.
-        *   \param data dado a ser removido.
-        */
-        void remove(const MarketBox& data);
-
-        /*!
         *   Retorna true se a lista estiver vazia.
         *   \return uma variavel booleana.
         */
         bool empty() const;
-
-        /*!
-        *   Retorna true se o dado recebido esta contido na lista.
-        *   \param data dado a ser verificado.
-        *   \return uma variavel booleana.
-        */
-        bool contains(const MarketBox& data) const
-
-        /*!
-        *   Retorna posicao de uma variavel.
-        *   \param data variavel a ser verificada.
-        *   \return um inteiro correspondente a posicao.
-        */;
-        std::size_t find(const MarketBox& data) const;
 
         /*!
         *   Retorna a quantidade de elementos na lista.

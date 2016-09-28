@@ -57,6 +57,8 @@ class TestLuiz
 
             CircularList* circular = new CircularList();
 
+            cout << "instanciou circular" << endl;
+
             MarketBox* marketBox = new MarketBox();
 
             cout << "Tamanho com nenhum elemento: 0 = " << circular->size() << endl;
@@ -72,9 +74,6 @@ class TestLuiz
 
             cout << "Tamanho com um elemento: 0 = " << circular->size() << endl;
             cout << "Vazio: true = " << circular->empty() << endl;
-
-            delete circular;
-
 
         }
     private:
