@@ -14,7 +14,7 @@ class Client
     private:
         PayType pay_type_;
         unsigned int total_purchases_;
-    //    unsigned double total_purchases_value_;
+        unsigned double total_purchases_value_;
 
 
 

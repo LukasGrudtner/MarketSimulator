@@ -32,7 +32,7 @@ class Clock
         *   Retorna o tempo.
         *   \return tempo correspondente ao tempo do contador.
         */
-        const Time& get_time() const;
+        const Time* get_time() const;
 
     private:
         Time* time = new Time(); /*!< Tempo. */
