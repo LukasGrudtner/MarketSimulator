@@ -5,6 +5,7 @@
 		<Option title="Market" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="model\structures\;model\;model\box\;model\client\;model\market\;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/Market" prefix_auto="1" extension_auto="1" />
@@ -34,27 +35,67 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/bad_performance.h" />
-		<Unit filename="include/card.h" />
-		<Unit filename="include/cash.h" />
-		<Unit filename="include/circular_list.h" />
-		<Unit filename="include/client.h" />
-		<Unit filename="include/high_performance.h" />
-		<Unit filename="include/market_box.h" />
-		<Unit filename="include/medium_performance.h" />
-		<Unit filename="include/pay_type.h" />
-		<Unit filename="include/performance.h" />
+		<Unit filename="include/bad_performance.h">
+			<Option virtualFolder="model/box/" />
+		</Unit>
+		<Unit filename="include/card.h">
+			<Option virtualFolder="model/client/" />
+		</Unit>
+		<Unit filename="include/cash.h">
+			<Option virtualFolder="model/client/" />
+		</Unit>
+		<Unit filename="include/circular_list.h">
+			<Option virtualFolder="model/structures/" />
+		</Unit>
+		<Unit filename="include/client.h">
+			<Option virtualFolder="model/client/" />
+		</Unit>
+		<Unit filename="include/high_performance.h">
+			<Option virtualFolder="model/box/" />
+		</Unit>
+		<Unit filename="include/market_box.h">
+			<Option virtualFolder="model/box/" />
+		</Unit>
+		<Unit filename="include/medium_performance.h">
+			<Option virtualFolder="model/box/" />
+		</Unit>
+		<Unit filename="include/pay_type.h">
+			<Option virtualFolder="model/client/" />
+		</Unit>
+		<Unit filename="include/performance.h">
+			<Option virtualFolder="model/box/" />
+		</Unit>
 		<Unit filename="main.cpp" />
-		<Unit filename="src/bad_performance.cpp" />
-		<Unit filename="src/card.cpp" />
-		<Unit filename="src/cash.cpp" />
-		<Unit filename="src/circular_list.cpp" />
-		<Unit filename="src/client.cpp" />
-		<Unit filename="src/high_performance.cpp" />
-		<Unit filename="src/market_box.cpp" />
-		<Unit filename="src/medium_performance.cpp" />
-		<Unit filename="src/pay_type.cpp" />
-		<Unit filename="src/performance.cpp" />
+		<Unit filename="src/bad_performance.cpp">
+			<Option virtualFolder="model/box/" />
+		</Unit>
+		<Unit filename="src/card.cpp">
+			<Option virtualFolder="model/client/" />
+		</Unit>
+		<Unit filename="src/cash.cpp">
+			<Option virtualFolder="model/client/" />
+		</Unit>
+		<Unit filename="src/circular_list.cpp">
+			<Option virtualFolder="model/structures/" />
+		</Unit>
+		<Unit filename="src/client.cpp">
+			<Option virtualFolder="model/client/" />
+		</Unit>
+		<Unit filename="src/high_performance.cpp">
+			<Option virtualFolder="model/box/" />
+		</Unit>
+		<Unit filename="src/market_box.cpp">
+			<Option virtualFolder="model/box/" />
+		</Unit>
+		<Unit filename="src/medium_performance.cpp">
+			<Option virtualFolder="model/box/" />
+		</Unit>
+		<Unit filename="src/pay_type.cpp">
+			<Option virtualFolder="model/client/" />
+		</Unit>
+		<Unit filename="src/performance.cpp">
+			<Option virtualFolder="model/box/" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

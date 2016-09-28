@@ -13,19 +13,19 @@ template<typename T>
 *   Na classe CircularList, e implementado o funcionamento de uma lista
 *   atraves de Nodes que referenciam o proximo valor na lista e o dado na mesma.
 */
-class circular_list
+class CircularList
 {
  public:
         /*!
         *   Construtor.
         */
-        circular_list();
+        CircularList();
 
         /*!
         *   Destrutor.
         *   \sa clear()
         */
-        ~circular_list();
+        ~CircularList();
 
         /*!
         *   Limpa a lista.
@@ -194,8 +194,8 @@ class Node {
         Node* next_{nullptr};   /*!< Proximo Node. */
 };
 
-        Node* head;
-        std::size_t size_;
+        Node* head;             /*!< Usado como sentinela. */
+        std::size_t size_;      /*!< Tamanho da lista. */
 };
 
 #endif // CIRCULAR_LIST_H

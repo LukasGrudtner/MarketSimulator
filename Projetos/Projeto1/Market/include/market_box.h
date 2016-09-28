@@ -11,12 +11,12 @@ class MarketBox
     protected:
 
     private:
-        Queue client_queue;
-        string identifier;
-        Performance performance;
+        // Queue client_queue;
+        // string identifier;
+        // Performance performance;
         unsigned int clients_in_queue;
         unsigned int clients_served;
-        Time average_service_time;
+        // Time average_service_time;
         double total_billing;
         double average_billing;
 };

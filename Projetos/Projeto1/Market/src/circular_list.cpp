@@ -2,21 +2,21 @@
 
 
 template<typename T>
-circular_list<T>::circular_list()
+CircularList<T>::CircularList()
 {
     size_ = 0u;
     head = new Node(0u);
 }
 
 template<typename T>
-circular_list<T>::~circular_list()
+CircularList<T>::~CircularList()
 {
     clear();
     delete head;
 }
 
 template<typename T>
-void circular_list<T>::clear()
+void CircularList<T>::clear()
 {
     while (!empty()) {
         pop_front();
@@ -24,13 +24,13 @@ void circular_list<T>::clear()
 }
 
 template<typename T>
-void circular_list<T>::push_back(const T& data)
+void CircularList<T>::push_back(const T& data)
 {
     insert(data, size());
 }
 
 template<typename T>
-void circular_list<T>::push_front(const T& data)
+void CircularList<T>::push_front(const T& data)
 {
     Node* new_Node = new Node(data);
 
@@ -46,7 +46,7 @@ void circular_list<T>::push_front(const T& data)
 }
 
 template<typename T>
-void circular_list<T>::insert(const T& data, std::size_t index)
+void CircularList<T>::insert(const T& data, std::size_t index)
 {
     Node *new_Node;
     Node *previous;
@@ -78,7 +78,7 @@ void circular_list<T>::insert(const T& data, std::size_t index)
 }
 
 template<typename T>
-void circular_list<T>::insert_sorted(const T& data)
+void CircularList<T>::insert_sorted(const T& data)
 {
     Node *current;
     int position;
@@ -102,7 +102,7 @@ void circular_list<T>::insert_sorted(const T& data)
 }
 
 template<typename T>
-const T& circular_list<T>::at(std::size_t index) const
+const T& CircularList<T>::at(std::size_t index) const
 {
     Node *data_ = head->next();
 
@@ -121,7 +121,7 @@ const T& circular_list<T>::at(std::size_t index) const
 }
 
 template<typename T>
-T circular_list<T>::pop(std::size_t index)
+T CircularList<T>::pop(std::size_t index)
 {
     Node* previous;
     Node* to_eliminate;
@@ -149,7 +149,7 @@ T circular_list<T>::pop(std::size_t index)
 }
 
 template<typename T>
-T circular_list<T>::pop_back()
+T CircularList<T>::pop_back()
 {
     if (empty()) {
         throw std::out_of_range("Empty_list_error");
@@ -159,7 +159,7 @@ T circular_list<T>::pop_back()
 }
 
 template<typename T>
-T circular_list<T>::pop_front()
+T CircularList<T>::pop_front()
 {
     Node *quit;
     T to_back;
@@ -178,7 +178,7 @@ T circular_list<T>::pop_front()
 }
 
 template<typename T>
-void circular_list<T>::remove(const T& data)
+void CircularList<T>::remove(const T& data)
 {
     Node* previous = head;
     Node* current = head->next();
@@ -193,13 +193,13 @@ void circular_list<T>::remove(const T& data)
 }
 
 template<typename T>
-bool circular_list<T>::empty() const
+bool CircularList<T>::empty() const
 {
     return size_ == 0;
 }
 
 template<typename T>
-bool circular_list<T>::contains(const T& data) const
+bool CircularList<T>::contains(const T& data) const
 {
     auto *data_ = head;
 
@@ -213,7 +213,7 @@ bool circular_list<T>::contains(const T& data) const
 }
 
 template<typename T>
-std::size_t circular_list<T>::find(const T& data) const
+std::size_t CircularList<T>::find(const T& data) const
 {
     auto *data_ = head;
 
@@ -227,7 +227,7 @@ std::size_t circular_list<T>::find(const T& data) const
 }
 
 template<typename T>
-std::size_t circular_list<T>::size() const
+std::size_t CircularList<T>::size() const
 {
     return size_;
 }
