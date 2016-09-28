@@ -9,10 +9,14 @@ class Client
         Client();
         virtual ~Client();
 
-    protected:
+        enum PayType { cash, card };
 
     private:
-        enum PayType { cash, card };
+        PayType pay_type_;
+        unsigned int total_purchases_;
+    //    unsigned double total_purchases_value_;
+
+
 
 };
 

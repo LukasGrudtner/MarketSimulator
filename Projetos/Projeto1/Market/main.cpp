@@ -8,9 +8,7 @@ int main()
 {
     cout << "============Test1=============\n";
 
-    auto tempoCartao = 60u;
-    auto tempoItem = 4u;
-    Performance* teste = new Performance(tempoCartao, tempoItem);
+    Performance* teste = new Performance(60u, 4);
 
     cout << "Tempo cartao: 60 = " << teste->get_time_to_spend_card() << "\n";
     cout << "Tempo item: 4 = " << teste->get_time_to_spend_item() << "\n";
