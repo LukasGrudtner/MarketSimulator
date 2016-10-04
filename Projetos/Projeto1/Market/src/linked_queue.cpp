@@ -46,6 +46,7 @@ Client LinkedQueue::dequeue()
 {
     Node* eliminar;
     Client volta;
+
     if (empty()) {
         throw std::out_of_range("Erro Fila Vazia!");
     } else {

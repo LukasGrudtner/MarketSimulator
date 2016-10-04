@@ -27,19 +27,19 @@ class Time
         *   Retorna tempo em segundos.
         *   \param inteiro correspondente ao tempo em segundos.
         */
-        const int& get_time_in_seconds() const;
+        const unsigned int& get_time_in_seconds() const;
 
         /*!
         *   Retorna tempo em minutos.
         *   \param inteiro correspondente ao tempo em minutos.
         */
-        const int& get_time_in_minutes() const;
+        const unsigned int& get_time_in_minutes() const;
 
         /*!
         *   Retorna tempo em horas.
         *   \param inteiro correspondente ao tempo em horas.
         */
-        const int& get_time_in_hours() const;
+        const unsigned int& get_time_in_hours() const;
 
     private:
         unsigned int time_in_seconds; /*!< Tempo em segundos. */

@@ -21,7 +21,9 @@ class Lukas
         {
             cout << "===================LINKED QUEUE===================" << endl;
             LinkedQueue* lqueue = new LinkedQueue();
-            Client* client = new Client();
+            auto test_time = new Time();
+
+            Client* client = new Client(test_time, test_time);
 
             cout << "Empty | 1 = " << lqueue->empty() << endl;
             lqueue->enqueue(*client);
