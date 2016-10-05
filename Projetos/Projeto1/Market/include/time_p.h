@@ -15,7 +15,7 @@ class Time
         *   Construtor.
         *   \param tempo predefinido.
         */
-        Time(unsigned int& time);
+        Time(unsigned int time);
 
         /*!
         *   Adiciona n segundos ao tempo decorido.

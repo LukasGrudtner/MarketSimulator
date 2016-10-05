@@ -12,7 +12,7 @@ int main()
 {
 
 
-       //     TestLuiz* testes = new TestLuiz();
+            TestLuiz* testes = new TestLuiz();
       //      Lukas* lks = new Lukas();
 
 }

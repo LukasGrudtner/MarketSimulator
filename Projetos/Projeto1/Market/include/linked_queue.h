@@ -5,60 +5,71 @@
 #include <cstdint>
 #include <stdexcept>
 
-//template<typename T>
-
 //! Classe LinkedQueue
-/*! A classe implementa a estrutura de fila encadeada, onde o tamanho é dinâmico,
-e cada elemento (ou node) possui um dado e um ponteiro para o próximo elemento. */
+/*! A classe implementa a estrutura de fila encadeada, onde o tamanho é dinâmico, sendo no maximo 10,
+*   e cada elemento (ou node) possui um dado e um ponteiro para o próximo elemento.
+*/
 class LinkedQueue
 {
     public:
-        //! Construtor da Classe
-        /*! Método construtor padrão da classe LinkedQueue. */
+        /*!
+        *   Construtor.
+        */
         LinkedQueue();
 
-        //! Destrutor
+        /*!
+        *   Destrutor.
+        *   \sa clear()
+        */
         virtual ~LinkedQueue();
 
-        //! Clear
-        /*! Remove todos os elementos da fila encadeada. */
+        /*!
+        *   Limpa a lista.
+        *   \sa empty(), dequeue()
+        */
         void clear();
 
-        //! Enqueue
-        /*! Insere elementos no fim da fila encadeada.
-            \param data um dado para ser inserido na fila.
+        /*!
+        *   Adiciona um novo cliente no fim da fila.
+        *   \param data cliente a ser adicionado
         */
-        void enqueue(const Client& data);
+        void enqueue(Client* data);
 
-        //! Dequeue
-        /*! Remove elementos no início da fila encadeada; */
-        Client dequeue();
-
-        //! Front
-        /*! Retorna o elemento no início da fila.
-            \return um dado do tipo T guardado no elemento da frente.
+        /*!
+        *   Retorna o priemiro cliente da fila e o retira da mesma.
+        *   \return cliente
         */
-        Client& front() const;
+        Client* dequeue();
 
-        //! Back
-        /*! Retorna o elemento no final da fila.
-            \return um dado do tipo T guardado no elemento do fim.
+        /*!
+        *   Retorna o priemiro cliente da fila.
+        *   \return cliente
         */
-        Client& back() const;
+        Client* front() const;
 
-        //! Empty
-        /*! Verifica se a fila está vazia.
-            /return um valor do tipo bool.
+        /*!
+        *   Retorna o ultimo cliente da fila.
+        *   \return cliente
+        */
+        Client* back() const;
+
+        /*!
+        *   Retorna true se a fila estiver vazia.
+        *   \return uma variavel booleana.
         */
         bool empty() const;
 
-        //! NumPeopleProcedure
-        /*! Retorna o número de pessoas na fila. */
-        std::size_t num_people_proc();
+        /*!
+        *   Retorna o numero de pessoas na fila.
+        *   \return quantidade de pessoas.
+        */
+        std::size_t num_people();
 
-        //! NumProductsProcedure
-        /*! Retorna o número de produtos na fila. */
-        std::size_t num_products_proc();
+        /*!
+        *   Retorna o numero de produtos na fila.
+        *   \return quantidade de produtos.
+        */
+        std::size_t num_products();
 
     protected:
 
@@ -76,7 +87,7 @@ class LinkedQueue
             /*! Método construtor da classe Node com um parâmetro de dados.
                 /param data dado a ser inserido no Node.
             */
-            explicit Node(const Client& data):
+            explicit Node(Client* data):
                 data_{data}
             {}
 
@@ -85,7 +96,7 @@ class LinkedQueue
                 /param data dado a ser inserido no Node.
                 /param next ponteiro para o próximo Node.
             */
-            Node(const Client& data, Node* next):
+            Node(Client* data, Node* next):
                 data_{data},
                 next_{next}
             {}
@@ -93,14 +104,14 @@ class LinkedQueue
             /*! Método getter de um Node.
                 /return o dado do elemento.
             */
-            Client& data() {
+            Client* data() {
                 return data_;
             }
             //! Data Const
             /*! Método getter de um Node, onde o dado retornado não será alterado.
                 /return o dado do elemento.
             */
-            const Client& data() const {
+            const Client* data() const {
                 return data_;
             }
 
@@ -128,14 +139,14 @@ class LinkedQueue
             }
 
          private:
-            Client data_; /**< Declaração do dado, do tipo T. */
-            Node* next_{nullptr}; /**< Declaração do próximo Node. */
+            Client* data_;          /*!< Declaração do dado, do tipo T. */
+            Node* next_{nullptr}; /*!< Declaração do próximo Node. */
         };
 
-        Node* head;  // nodo-cabeça
-        Node* tail;  // nodo-fim
-        std::size_t num_people;
-        std::size_t num_products;
+        Node* head;                 /*!< Cabeça da fila. */
+        Node* tail;                 /*!< Final da fila. */
+        unsigned int num_people_;     /*!< Numero de pessoas na fila. */
+        unsigned int num_products_;   /*!< Numero de produtos na fila. */
 };
 
 #endif // LINKEDQUEUE_H

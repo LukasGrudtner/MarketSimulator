@@ -174,7 +174,7 @@ class Node {
         }
 
  private:
-        MarketBox data_;                /*!< Dado contido. */
+        MarketBox data_;        /*!< Dado contido. */
         Node* next_{nullptr};   /*!< Proximo Node. */
 };
 

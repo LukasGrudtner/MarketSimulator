@@ -1,7 +1,7 @@
 #ifndef CLOCK_H
 #define CLOCK_H
 
-#include "time.h"
+#include "time_p.h"
 
 //! Classe Clock para constrolar o tempo de simulacao.
 class Clock

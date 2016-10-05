@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <time.h>
 
 #include "client.h"
 
@@ -7,19 +8,19 @@ Client::Client()
 
 }
 
-Client::Client(Time*& arrival_time, Time*& exit_time)
+Client::Client(Time*& arrival_time)
 {
-    total_purchases_= rand() %98 + 2;
+    srand( (unsigned)time(NULL) );
+    total_purchases_= 2+ (rand() %98);
     set_total_purchases_value();
     set_pay_type();
     set_queue_type();
     arrival_time_ = arrival_time;
-    exit_time_ = exit_time;
 }
 
 void Client::set_queue_type()
 {
-    int queue_type = rand() %1;
+    int queue_type = rand() %2;
 
     if (queue_type == 1) {
         queue_type_ = QueueType::less_Products;
@@ -30,7 +31,7 @@ void Client::set_queue_type()
 
 void Client::set_pay_type()
 {
-    int pay_type = rand() %100;
+    int pay_type = 1 + (rand() %100);
 
     if (pay_type < 80) {
         pay_type_ = PayType::card;
@@ -42,13 +43,19 @@ void Client::set_pay_type()
 void Client::set_total_purchases_value()
 {
     for (auto i = 0; i < total_purchases_; i++) {
-        total_purchases_value_ += rand()%89 + 1;
+        total_purchases_value_ += 1 + (rand()%89);
     }
 }
 
 Client::~Client()
 {
+    delete arrival_time_;
+    delete exit_time_;
+}
 
+void Client::set_exit_time(Time*& exit_time)
+{
+    exit_time_ = exit_time;
 }
 
 Time* Client::get_arrival_time()
@@ -59,6 +66,11 @@ Time* Client::get_arrival_time()
 Time* Client::get_exit_time()
 {
     return exit_time_;
+}
+
+Time* Client::get_average_time()
+{
+    return new Time(get_exit_time()->get_time_in_seconds() - get_arrival_time()->get_time_in_seconds());
 }
 
 PayType Client::get_pay_type()

@@ -1,22 +1,19 @@
 #include "linked_queue.h"
 
-//template<typename T>
 LinkedQueue::LinkedQueue()
 {
     head = new Node();
     tail = NULL;
-    num_people = 0u;
-    num_products = 0u;
+    num_people_ = 0u;
+    num_products_ = 0u;
 }
 
-//template<typename T>
 LinkedQueue::~LinkedQueue()
 {
     clear();
     delete head;
 }
 
-//template<typename T>
 void LinkedQueue::clear()
 {
     while (!empty()) {
@@ -24,73 +21,65 @@ void LinkedQueue::clear()
     }
 }
 
-//template<typename T>
-void LinkedQueue::enqueue(const Client& data)
+void LinkedQueue::enqueue(Client* data)
 {
-    Node* novo = new Node(data);
-    if (novo == NULL) {
-        throw std::out_of_range("Erro");
-    } else {
-        if (empty()) {
-            head->next(novo);
-        } else {
-            tail->next(novo);
-        }
-        tail = novo;
-        num_people++;
-    }
-}
-
-//template<typename T>
-Client LinkedQueue::dequeue()
-{
-    Node* eliminar;
-    Client volta;
+    Node* new_node = new Node(data);
 
     if (empty()) {
-        throw std::out_of_range("Erro Fila Vazia!");
+        head->next(new_node);
     } else {
-        eliminar = head->next();
-        head->next(eliminar->next());
-        volta = eliminar->data();
-        num_people--;
-        delete eliminar;
+        tail->next(new_node);
     }
-    return volta;
+    tail = new_node;
+    num_people_++;
+    num_products_ += data->get_total_purchases();
 }
 
-//template<typename T>
-Client& LinkedQueue::front() const
+Client* LinkedQueue::dequeue()
+{
+    Node* to_eliminate;
+    Client* to_back;
+
+    if (empty()) {
+        throw std::out_of_range("Empty_queue_Exception");
+    } else {
+        to_eliminate = head->next();
+        head->next(to_eliminate->next());
+        to_back = to_eliminate->data();
+        num_people_--;
+        num_products_ -= to_back->get_total_purchases();
+        delete to_eliminate;
+    }
+    return to_back;
+}
+
+Client* LinkedQueue::front() const
 {
     if (empty()) {
-        throw std::out_of_range("Erro Fila Vazia!");
+        throw std::out_of_range("Empty_queue_Exception");
     }
     return head->next()->data();
 }
 
-//template<typename T>
-Client& LinkedQueue::back() const
+Client* LinkedQueue::back() const
 {
     if (empty()) {
-        throw std::out_of_range("Erro Fila Vazia!");
+        throw std::out_of_range("Empty_queue_Exception");
     }
     return tail->data();
 }
 
-//template<typename T>
 bool LinkedQueue::empty() const
 {
-    return (num_people == 0);
+    return (num_people_ == 0);
 }
 
-//template<typename T>
-size_t LinkedQueue::num_people_proc()
+size_t LinkedQueue::num_people()
 {
-    return num_people;
+    return num_people_;
 }
 
-//template<typename T>
-size_t LinkedQueue::num_products_proc()
+size_t LinkedQueue::num_products()
 {
-    return num_products;
+    return num_products_;
 }

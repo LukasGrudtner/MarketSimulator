@@ -13,7 +13,6 @@ class Lukas
         Lukas()
         {
             TESTLinkedQueue();
-            TESTMarketBox();
         }
         virtual ~Lukas(){}
 
@@ -23,26 +22,19 @@ class Lukas
             LinkedQueue* lqueue = new LinkedQueue();
             auto test_time = new Time();
 
-            Client* client = new Client(test_time, test_time);
+            Client* client = new Client(test_time);
 
             cout << "Empty | 1 = " << lqueue->empty() << endl;
-            lqueue->enqueue(*client);
+            lqueue->enqueue(client);
             cout << "Empty | 0 = " << lqueue->empty() << endl;
-            lqueue->enqueue(*client);
-            cout << "Num People | 2 = " << lqueue->num_people_proc() << endl;
+            lqueue->enqueue(client);
+            cout << "Num People | 2 = " << lqueue->num_people() << endl;
             lqueue->dequeue();
             lqueue->dequeue();
-            cout << "Num People | 0 = " << lqueue->num_people_proc() << endl;
+            cout << "Num People | 0 = " << lqueue->num_people() << endl;
             cout << "===================LINKED QUEUE===================\n" << endl;
         }
 
-        TESTMarketBox()
-        {
-            cout << "===================MARKET BOX===================" << endl;
-            MarketBox* box = new MarketBox();
-            cout << "MarketBox initialized." << endl;
-            cout << "===================MARKET BOX===================" << endl;
-        }
 
     protected:
 

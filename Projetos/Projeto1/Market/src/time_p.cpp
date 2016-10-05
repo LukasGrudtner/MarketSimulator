@@ -1,11 +1,11 @@
-#include "time.h"
+#include "time_p.h"
 
 Time::Time()
 {
     time_in_seconds = 0u;
 }
 
-Time::Time(unsigned int& time)
+Time::Time(unsigned int time)
 {
     time_in_seconds = time;
 }

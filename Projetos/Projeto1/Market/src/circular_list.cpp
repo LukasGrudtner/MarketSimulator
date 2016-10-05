@@ -28,15 +28,11 @@ void CircularList::push_front(const MarketBox& data)
 {
     Node* new_Node = new Node(data);
 
-    if (new_Node == NULL) {
-        throw std::out_of_range("Full_list_error");
-    } else {
-        if (!empty()) {
-            new_Node->next(head->next());
-        }
-        head->next(new_Node);
-        size_++;
+    if (!empty()) {
+        new_Node->next(head->next());
     }
+    head->next(new_Node);
+    size_++;
 }
 
 void CircularList::insert(const MarketBox& data, std::size_t index)
@@ -45,27 +41,23 @@ void CircularList::insert(const MarketBox& data, std::size_t index)
     Node *previous;
 
     if (index > size() || index < 0) {
-        throw std::out_of_range("Invalid_position");
+        throw std::out_of_range("Invalid_position_Exception");
     } else {
         if (index == 0) {
             push_front(data);
         } else {
             new_Node = new Node(data);
-            if (new_Node == NULL) {
-                throw std::out_of_range("Full_list");
-            } else {
-                previous = head->next();
-                for (int i = 0; i < index -1; i++) {
-                    previous = previous->next();
-                }
-                if (index != size()) {
-                    new_Node->next(previous->next());
-                } else {
-                    new_Node->next(head);
-                }
-                previous->next(new_Node);
-                size_++;
+            previous = head->next();
+            for (int i = 0; i < index -1; i++) {
+                previous = previous->next();
             }
+            if (index != size()) {
+                new_Node->next(previous->next());
+            } else {
+                new_Node->next(head);
+            }
+            previous->next(new_Node);
+            size_++;
         }
     }
 }
@@ -75,10 +67,10 @@ const MarketBox& CircularList::at(std::size_t index) const
     Node *data_ = head->next();
 
     if (empty()) {
-        throw std::out_of_range("Full_list");
+        throw std::out_of_range("Full_list_Exception");
     } else {
         if (index > size() || index < 0) {
-            throw std::out_of_range("Invalid_position");
+            throw std::out_of_range("Invalid_position_Exception");
         } else {
             for (int i = 0; i < index; i++) {
                 data_ = data_->next();
@@ -95,7 +87,7 @@ MarketBox CircularList::pop(std::size_t index)
     MarketBox to_back;
 
     if (index > size()-1 || index < 0) {
-        throw std::out_of_range("Invalid_position");
+        throw std::out_of_range("Invalid_position_Exception");
     } else {
         if (index == 0) {
             return pop_front();
@@ -118,7 +110,7 @@ MarketBox CircularList::pop(std::size_t index)
 MarketBox CircularList::pop_back()
 {
     if (empty()) {
-        throw std::out_of_range("Empty_list_error");
+        throw std::out_of_range("Empty_list_Exception");
     } else {
         return pop(size()-1);
     }
@@ -130,7 +122,7 @@ MarketBox CircularList::pop_front()
     MarketBox to_back;
 
     if (empty()) {
-        throw std::out_of_range("Empty_list_error");
+        throw std::out_of_range("Empty_list_Exception");
     } else {
         quit = head->next();
         to_back = quit->data();

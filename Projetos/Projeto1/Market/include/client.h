@@ -1,7 +1,7 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include "time.h"
+#include "time_p.h"
 
         /*!
         *   Tipos de pagamento possiveis.
@@ -28,12 +28,17 @@ class Client
         *   \param tempo de chegada.
         *   \param tempo de saida.
         */
-        Client(Time*& arrival_time, Time*& exit_time);
+        Client(Time*& arrival_time);
 
         /*!
         *   Destrutor.
         */
         virtual ~Client();
+
+        /*!
+        *   Define o tempo que o usuario deixara o mercado.
+        */
+        void set_exit_time(Time*& arrival_time);
 
         /*!
         *   \return tempo de chegada na fila.
@@ -44,6 +49,11 @@ class Client
         *   \return tempo de saida na fila.
         */
         Time* get_exit_time();
+
+        /*!
+        *   \return tempo que o cliente passou/vai passar na fila.
+        */
+        Time* get_average_time();
 
         /*!
         *   \return tipo de pagamento.

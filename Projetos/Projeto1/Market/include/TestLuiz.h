@@ -2,11 +2,14 @@
 #define TESTLUIZ_H
 
 #include <iostream>
+#include <string>
 
 #include "performance.h"
 #include "clock.h"
 #include "circular_list.h"
 #include "market_box.h"
+#include "client.h"
+#include "linked_queue.h"
 
 using namespace std;
 
@@ -74,6 +77,58 @@ class TestLuiz
 
             cout << "Tamanho com um elemento: 0 = " << circular->size() << endl;
             cout << "Vazio: true = " << circular->empty() << endl;
+
+            cout << "============Test4=============   Teste Cliente" << endl;
+
+            Time* tempoChegada = new Time(10u);
+            Time* tempoSaida = new Time(17u);
+
+            Client* cliente = new Client(tempoChegada);
+
+            cliente->set_exit_time(tempoSaida);
+            cout << "instanciou cliente" << endl;
+
+            cout << "Tempo chegada: 10 = " << cliente->get_arrival_time()->get_time_in_seconds() << endl;
+            cout << "Tempo saida: 17 = " << cliente->get_exit_time()->get_time_in_seconds() << endl;
+            cout << "Tempo que ficou na fila: 7 = " << cliente->get_average_time()->get_time_in_seconds() << endl;
+
+            string tipoPagamento("");
+
+            if (cliente->get_pay_type() == PayType::card) {
+                tipoPagamento = "cartão";
+            } else {
+                tipoPagamento = "Dinheiro";
+            }
+
+            cout << "Tipo de pagamento: random = " << tipoPagamento << endl;
+
+            string tipoFila("");
+
+            if (cliente->get_queue_type() == QueueType::less_size) {
+                tipoFila = "menorTamanho";
+            } else {
+                tipoFila = "menosProdutos";
+            }
+
+            cout << "Tipo de fila: random = " << tipoFila << endl;
+
+            cout << "Numero de compras: random = " << cliente->get_total_purchases() << endl;
+
+            cout << "Valor total: random = " << cliente->get_total_value() << endl;
+
+            cout << "============Test5=============   Teste numero Produtos na fila" << endl;
+
+            LinkedQueue* lqueue = new LinkedQueue();
+            lqueue->enqueue(cliente);
+
+            cout << "Numero de produtos na fila: " << cliente->get_total_purchases() << " = " << lqueue->num_products() << endl;
+            lqueue->enqueue(cliente);
+
+            cout << "Numero de produtos na fila: " << cliente->get_total_purchases()*2 << " = " << lqueue->num_products() << endl;
+            lqueue->dequeue();
+
+            cout << "Numero de produtos na fila: " << cliente->get_total_purchases() << " = " << lqueue->num_products() << endl;
+
 
         }
     private:
