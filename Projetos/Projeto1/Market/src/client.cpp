@@ -43,8 +43,9 @@ void Client::set_pay_type()
 void Client::set_total_purchases_value()
 {
     for (auto i = 0; i < total_purchases_; i++) {
-        total_purchases_value_ += 1 + (rand()%89);
+        total_purchases_value_ += (1 + (rand()%8900));
     }
+    total_purchases_value_ = total_purchases_value_/100;
 }
 
 Client::~Client()
@@ -53,7 +54,7 @@ Client::~Client()
     delete exit_time_;
 }
 
-void Client::set_exit_time(Time*& exit_time)
+void Client::set_exit_time(Time* exit_time)
 {
     exit_time_ = exit_time;
 }

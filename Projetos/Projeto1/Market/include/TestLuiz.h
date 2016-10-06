@@ -27,7 +27,7 @@ class TestLuiz
 
             delete performance;
 
-            cout << "============Test2=============   Teste Clock/Time" << endl;
+            cout << "\n============Test2=============   Teste Clock/Time" << endl;
 
             Clock* clock = new Clock();
 
@@ -56,7 +56,7 @@ class TestLuiz
 
             delete clock;
 
-            cout << "============Test3=============   Teste Circular List" << endl;
+            cout << "\n============Test3=============   Teste Circular List" << endl;
 
             CircularList* circular = new CircularList();
 
@@ -68,7 +68,7 @@ class TestLuiz
             cout << "Vazio: true = " << circular->empty() << endl;
 
 
-            circular->push_front(*marketBox);
+            circular->push_front(marketBox);
 
             cout << "Tamanho com um elemento: 1 = " << circular->size() << endl;
             cout << "Vazio: false = " << circular->empty() << endl;
@@ -78,7 +78,10 @@ class TestLuiz
             cout << "Tamanho com um elemento: 0 = " << circular->size() << endl;
             cout << "Vazio: true = " << circular->empty() << endl;
 
-            cout << "============Test4=============   Teste Cliente" << endl;
+            delete circular;
+            delete marketBox;
+
+            cout << "\n============Test4=============   Teste Cliente" << endl;
 
             Time* tempoChegada = new Time(10u);
             Time* tempoSaida = new Time(17u);
@@ -116,7 +119,9 @@ class TestLuiz
 
             cout << "Valor total: random = " << cliente->get_total_value() << endl;
 
-            cout << "============Test5=============   Teste numero Produtos na fila" << endl;
+            delete tempoSaida;
+
+            cout << "\n============Test5=============   Teste numero Produtos na fila" << endl;
 
             LinkedQueue* lqueue = new LinkedQueue();
             lqueue->enqueue(cliente);
@@ -128,6 +133,74 @@ class TestLuiz
             lqueue->dequeue();
 
             cout << "Numero de produtos na fila: " << cliente->get_total_purchases() << " = " << lqueue->num_products() << endl;
+
+            delete lqueue;
+
+            cout << "\n============Test6=============   Teste MarketBox" << endl;
+
+            Performance* ruim = new Performance(60u, 4);
+            Performance* medio = new Performance(25u, 2);
+            Performance* bom = new Performance(10u, 1);
+
+            MarketBox* caixaRuim = new MarketBox("JoaoR", ruim, 800);
+            MarketBox* caixaMedio = new MarketBox("PedroM", medio, 1000);
+            MarketBox* caixaBom = new MarketBox("VitorB", bom, 1200);
+
+            cout << "Tres caixas instanciados, sendo eles " << caixaRuim->get_identifier() << ", " << caixaMedio->get_identifier() << " e " << caixaBom->get_identifier() << "." << endl;
+
+            cout << "Um cliente instanciado e colocado em diferentes filas." << endl;
+
+            cout << "Na fila ''ruim'':" << endl;
+            caixaRuim->add_client(cliente);
+            cout << "Tempo de saida na fila ruim : = " << cliente->get_exit_time()->get_time_in_seconds() << endl;
+
+            cout << "Na fila ''media'':" << endl;
+            caixaMedio->add_client(cliente);
+
+            cout << "Tempo de saida na fila media: = " << cliente->get_exit_time()->get_time_in_seconds() << endl;
+
+            cout << "Na fila ''boa'':" << endl;
+            caixaBom->add_client(cliente);
+
+            cout << "Tempo de saida na fila boa  : = " << cliente->get_exit_time()->get_time_in_seconds() << endl;
+
+            cout << "Num clientes na fila boa: 1 = " << caixaBom->get_num_of_clients_in_queue() << endl;
+
+            caixaBom->add_client(cliente);
+
+            cout << "Tempo de saida com duas pessoas fila boa : " << cliente->get_exit_time()->get_time_in_seconds() << endl;
+
+            cout << "Tempo de espera desse segundo cliente na fila boa: " << cliente->get_average_time()->get_time_in_seconds() << endl;
+
+            cout << "Num clientes na fila boa: 2 = " << caixaBom->get_num_of_clients_in_queue() << endl;
+
+            caixaBom->remove_client();
+
+            cout << "Num clientes na fila boa: 1 = " << caixaBom->get_num_of_clients_in_queue() << endl;
+            cout << "Num clientes atendidos: 1 = " << caixaBom->get_num_of_clients_served() << endl;
+
+            cout << "Tempo total de espera (igual ao tempo de espera do segundo cliente) : " << caixaBom->get_average_service_time()->get_time_in_seconds() << endl;
+
+            cout << "faturamento total : " << caixaBom->get_total_billing() << endl;
+            cout << "Lucro total : " << caixaBom->get_profit() << endl;
+
+            cout << "Numero de produtos na fila: " << caixaBom->get_num_of_products_in_queue() << endl;
+            cout << "Tempo medio de espera na fila: " << caixaBom->get_average_service_time()->get_time_in_seconds() << endl;
+            cout << "Tempo para saida do proximo cliente: " << caixaBom->get_exit_time_of_first_client()->get_time_in_seconds() << endl;
+
+            cout << "OBS: Tudo ok soh cuidar na hora de dar os deletes" << endl;
+
+            delete caixaBom;
+            delete ruim;
+            delete medio;
+            delete bom;
+            delete cliente;
+            delete caixaMedio;
+            delete caixaRuim;
+            delete tempoChegada;
+
+
+
 
 
         }

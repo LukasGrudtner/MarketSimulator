@@ -38,7 +38,7 @@ class Client
         /*!
         *   Define o tempo que o usuario deixara o mercado.
         */
-        void set_exit_time(Time*& arrival_time);
+        void set_exit_time(Time* arrival_time);
 
         /*!
         *   \return tempo de chegada na fila.

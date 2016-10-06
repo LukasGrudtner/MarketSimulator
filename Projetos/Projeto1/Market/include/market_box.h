@@ -61,6 +61,11 @@ class MarketBox
         double get_average_billing();
 
         /*!
+        *   \return lucro do caixa.
+        */
+        double get_profit();
+
+        /*!
         *   Adiciona um cliente ao caixa.
         *   \param cliente a ser adicionado.
         */
@@ -76,16 +81,24 @@ class MarketBox
         */
         Time* get_exit_time_of_first_client();
 
+        /*!
+        *   \return o identificador do caixa.
+        */
+        std::string get_identifier();
+
 
     private:
+        /*!
+        *   \return o tempo em segundos referente ao tempo de saida.
+        */
+        Time* output_time(Client* client);
+
         LinkedQueue* client_queue;       /*!< Fila com clientes no caixa. */
         std::string identifier_;        /*!< Id do funcionario. */
         Performance* performance_;      /*!< Performace do caixa. */
         unsigned int clients_served;    /*!< Numero de clientes que ja foram atendidos. */
-        Time* average_service_time;     /*!< Tempo medio de espera. */
         Time* total_hold_time;          /*!< Tempo total de espera. */
         double total_billing;           /*!< Faturamento total. */
-        double average_billing;         /*!< Faturamento medio. */
         double salary_;                 /*!< Salario do caixa. */
 };
 
