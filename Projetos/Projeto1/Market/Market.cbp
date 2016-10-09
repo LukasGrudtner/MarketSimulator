@@ -49,6 +49,9 @@
 			<Option virtualFolder="model/structures/" />
 		</Unit>
 		<Unit filename="include/lukas.h" />
+		<Unit filename="include/market.h">
+			<Option virtualFolder="model/market/" />
+		</Unit>
 		<Unit filename="include/market_box.h">
 			<Option virtualFolder="model/box/" />
 		</Unit>
@@ -70,6 +73,9 @@
 		</Unit>
 		<Unit filename="src/linked_queue.cpp">
 			<Option virtualFolder="model/structures/" />
+		</Unit>
+		<Unit filename="src/market.cpp">
+			<Option virtualFolder="model/market/" />
 		</Unit>
 		<Unit filename="src/market_box.cpp">
 			<Option virtualFolder="model/box/" />
