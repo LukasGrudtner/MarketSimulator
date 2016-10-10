@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1475688802 source:c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\main.cpp
+1476064782 source:c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\main.cpp
 	<iostream>
 	<stdio.h>
 	"performance.h"
@@ -54,7 +54,7 @@
 1474923145 c:\users\patricia\desktop\luiz felipe\ed\estrutura-de-dados\projetos\projeto1\market\include\cash.h
 	"pay_type.h"
 
-1475095470 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\performance.h
+1476064782 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\performance.h
 
 1474978128 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\bad_performance.h
 	"performance.h"
@@ -80,7 +80,7 @@
 1475769495 source:c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\src\circular_list.cpp
 	"circular_list.h"
 
-1475769495 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\circular_list.h
+1476064782 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\circular_list.h
 	<cstdint>
 	<stdexcept>
 	"market_box.h"
@@ -96,7 +96,7 @@
 1475777936 source:c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\src\market_box.cpp
 	"market_box.h"
 
-1475771518 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\market_box.h
+1476064782 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\market_box.h
 	<stdexcept>
 	<string>
 	"linked_queue.h"
@@ -176,13 +176,13 @@
 1475770743 source:c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\src\linked_queue.cpp
 	"linked_queue.h"
 
-1475691397 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\lukas.h
+1476064782 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\lukas.h
 	"linked_queue.h"
 	<iostream>
 	"client.h"
 	"market_box.h"
 
-1475778293 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\testluiz.h
+1476064782 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\testluiz.h
 	<iostream>
 	<string>
 	"performance.h"
@@ -208,4 +208,16 @@
 
 1475685006 source:c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\src\time_p.cpp
 	"time_p.h"
+
+1476115506 source:c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\src\market.cpp
+	"market.h"
+
+1476115421 c:\users\luizf\desktop\ed\estrutura-de-dados\projetos\projeto1\market\include\market.h
+	<string>
+	"performance.h"
+	"clock.h"
+	"circular_list.h"
+	"market_box.h"
+	"client.h"
+	"linked_queue.h"
 

@@ -19,7 +19,7 @@ class Market
         *   \param tempo de simulacao em horas.
         *   \param tempo medio para chegada de um novo cliente.
         */
-        Market(std::string market_name,unsigned int time_of_simulation, unsigned int average_time_of_arrival_of_clients);
+        Market(std::string market_name,unsigned int time_of_simulation, unsigned int average_time_of_arrival_of_clients, unsigned int max_clients_in_queue);
 
         /*!
         *   Destrutor.
@@ -36,20 +36,71 @@ class Market
         */
         void start_simulation();
 
+        /*!
+        *   \return faturamento total.
+        */
         double get_total_billing();
 
+        /*!
+        *   \return faturamento medio por caixa  .
+        */
         double get_average_billing();
 
-        double
+        /*!
+        *   \param posicao de caixa q se deseja saber a informacao.
+        *   \return faturamento medio de caixa em especifico.
+        */
+        double get_average_billing(unsigned int index);
 
-        //botar geters de informacoes aqui
+        /*!
+        *   \param posicao de caixa q se deseja saber a informacao.
+        *   \return faturamento total de caixa em especifico.
+        */
+        double get_billing(unsigned int index);
 
-    protected:
+        /*!
+        *   \return lucro total.
+        */
+        double get_total_profit();
+
+        /*!
+        *   \param posicao de caixa q se deseja saber a informacao.
+        *   \return lucro provido por determinado caixa.
+        */
+        double get_profit(unsigned int index);
+
+        /*!
+        *   \return tempo medio que um cliente passa na fila ao chegar nesse mercado.
+        */
+        double get_average_queue_time();
+
+        /*!
+        *   \return numero de clientes q desistiram.
+        */
+        int get_dropped_out();
+
+        /*!
+        *   \return faturamento que deixou de ser realizado.
+        */
+        double get_billing_lost();// faturamento q deixou de ser realizado == variavel q contem o valor de todos q deixaram a fila
+
+        /*!
+        *   \return nome do mercado.
+        */
+        std::string get_maket_name();
+
+        /*!
+        *   \param posicao de caixa q se deseja saber a informacao.
+        *   \return identificador do caixa.
+        */
+        std::string get_identifier(unsigned int index);
 
     private:
         CircularList* box_list;
         Clock* clock;
         unsigned int clients_dropped_out;
+        unsigned int max_clients_in_queue_;
+        double billing_lost;
         std::string market_name_;
         Time* time_of_simulation_;
         Time* average_time_of_arrival_of_clients_;
