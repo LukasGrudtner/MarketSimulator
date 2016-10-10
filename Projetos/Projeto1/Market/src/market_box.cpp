@@ -1,5 +1,7 @@
 #include "market_box.h"
 
+#include <iostream>
+
 MarketBox::MarketBox()
 {
 

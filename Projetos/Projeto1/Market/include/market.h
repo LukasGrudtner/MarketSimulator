@@ -87,13 +87,17 @@ class Market
         /*!
         *   \return nome do mercado.
         */
-        std::string get_maket_name();
+        std::string get_maket_name() {
+            return market_name_;
+        }
 
         /*!
         *   \param posicao de caixa q se deseja saber a informacao.
         *   \return identificador do caixa.
         */
-        std::string get_identifier(unsigned int index);
+        std::string get_identifier(unsigned int index) {
+            return box_list->at(index)->get_identifier();
+        }
 
     private:
         CircularList* box_list;

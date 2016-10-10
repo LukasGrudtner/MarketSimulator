@@ -45,6 +45,7 @@
 		<Unit filename="include/clock.h">
 			<Option virtualFolder="model/market/" />
 		</Unit>
+		<Unit filename="include/control.h" />
 		<Unit filename="include/linked_queue.h">
 			<Option virtualFolder="model/structures/" />
 		</Unit>
@@ -71,6 +72,7 @@
 		<Unit filename="src/clock.cpp">
 			<Option virtualFolder="model/market/" />
 		</Unit>
+		<Unit filename="src/control.cpp" />
 		<Unit filename="src/linked_queue.cpp">
 			<Option virtualFolder="model/structures/" />
 		</Unit>
