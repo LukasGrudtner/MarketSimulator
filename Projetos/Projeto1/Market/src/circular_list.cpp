@@ -3,13 +3,16 @@
 CircularList::CircularList()
 {
     size_ = 0u;
-    head = new Node();
+    sentinel = new Node();
+    pointer = new Node();
+    pointer->next(sentinel);
 }
 
 CircularList::~CircularList()
 {
     clear();
-    delete head;
+    delete pointer;
+    delete sentinel;
 }
 
 void CircularList::clear()
@@ -29,9 +32,9 @@ void CircularList::push_front(MarketBox* data)
     Node* new_Node = new Node(data);
 
     if (!empty()) {
-        new_Node->next(head->next());
+        new_Node->next(sentinel->next());
     }
-    head->next(new_Node);
+    sentinel->next(new_Node);
     size_++;
 }
 
@@ -47,14 +50,14 @@ void CircularList::insert(MarketBox* data, std::size_t index)
             push_front(data);
         } else {
             new_Node = new Node(data);
-            previous = head->next();
+            previous = sentinel->next();
             for (int i = 0; i < index -1; i++) {
                 previous = previous->next();
             }
             if (index != size()) {
                 new_Node->next(previous->next());
             } else {
-                new_Node->next(head);
+                new_Node->next(sentinel);
             }
             previous->next(new_Node);
             size_++;
@@ -64,7 +67,7 @@ void CircularList::insert(MarketBox* data, std::size_t index)
 
 MarketBox* CircularList::at(std::size_t index) const
 {
-    Node *data_ = head->next();
+    Node *data_ = sentinel->next();
 
     if (empty()) {
         throw std::out_of_range("Full_list_Exception");
@@ -92,7 +95,7 @@ MarketBox* CircularList::pop(std::size_t index)
         if (index == 0) {
             return pop_front();
         } else {
-            previous = head->next();
+            previous = sentinel->next();
             for (int i = 0; i < index -1; i++) {
                 previous = previous->next();
             }
@@ -124,9 +127,9 @@ MarketBox* CircularList::pop_front()
     if (empty()) {
         throw std::out_of_range("Empty_list_Exception");
     } else {
-        quit = head->next();
+        quit = sentinel->next();
         to_back = quit->data();
-        head->next(quit->next());
+        sentinel->next(quit->next());
         size_--;
         delete quit;
 
@@ -142,4 +145,14 @@ bool CircularList::empty() const
 std::size_t CircularList::size() const
 {
     return size_;
+}
+
+void CircularList::passes_forward()
+{
+    pointer->next(pointer->next()->next());
+}
+
+MarketBox* CircularList::get_data_pointer_element()
+{
+        return pointer->next()->data();
 }

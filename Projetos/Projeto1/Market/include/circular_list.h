@@ -101,6 +101,16 @@ class CircularList
         */
         std::size_t size() const;
 
+        /*!
+        *   Passa a referencia do ponteiro para o proximo elemento.
+        */
+        void passes_forward();
+
+        /*!
+        *   \return elemento do ponteiro.
+        */
+        MarketBox* get_data_pointer_element();
+
     private:
 //! Classe Node para referenciar dado e proximo elemento na fila.
 /*!
@@ -174,11 +184,11 @@ class Node {
         }
 
  private:
-        MarketBox* data_;        /*!< Dado contido. */
+        MarketBox* data_;       /*!< Dado contido. */
         Node* next_{nullptr};   /*!< Proximo Node. */
 };
-
-        Node* head;             /*!< Usado como sentinela. */
+        Node* pointer;          /*!< Usado como ponteiro para algum lugar na lista. */
+        Node* sentinel;         /*!< Usado como sentinela. */
         std::size_t size_;      /*!< Tamanho da lista. */
 };
 
