@@ -28,7 +28,7 @@ class Client
         *   \param tempo de chegada.
         *   \param tempo de saida.
         */
-        Client(Time*& arrival_time);
+        Client(Time* arrival_time);
 
         /*!
         *   Destrutor.

@@ -60,12 +60,8 @@ double MarketBox::get_profit()
 
 void MarketBox::add_client(Client* client)
 {
-    if (get_num_of_clients_in_queue() > 9 ) {
-        throw std::out_of_range("Full_queue_Exception");
-    } else {
-        client->set_exit_time(output_time(client));
-        client_queue->enqueue(client);
-    }
+    client->set_exit_time(output_time(client));
+    client_queue->enqueue(client);
 }
 
 Time* MarketBox::output_time(Client* client)

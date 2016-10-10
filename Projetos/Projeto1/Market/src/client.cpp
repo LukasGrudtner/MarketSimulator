@@ -8,7 +8,7 @@ Client::Client()
 
 }
 
-Client::Client(Time*& arrival_time)
+Client::Client(Time* arrival_time)
 {
     srand( (unsigned)time(NULL) );
     total_purchases_= 2+ (rand() %98);

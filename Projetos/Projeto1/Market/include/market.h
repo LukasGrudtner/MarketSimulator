@@ -138,6 +138,12 @@ class Market
         }
 
     private:
+
+        /*!
+        *   \return true se o mercado tiver vaga, e false se nao tiver.
+        */
+        bool empty_market();
+
         CircularList* box_list;
         Clock* clock;
         unsigned int clients_dropped_out;
