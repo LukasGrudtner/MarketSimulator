@@ -21,7 +21,7 @@ void LinkedQueue::clear()
     }
 }
 
-void LinkedQueue::enqueue(Client* data)
+void LinkedQueue::enqueue(const Client& data)
 {
     Node* new_node = new Node(data);
 
@@ -32,13 +32,13 @@ void LinkedQueue::enqueue(Client* data)
     }
     tail = new_node;
     num_people_++;
-    num_products_ += data->get_total_purchases();
+    num_products_ += new_node->data().get_total_purchases();
 }
 
-Client* LinkedQueue::dequeue()
+Client LinkedQueue::dequeue()
 {
     Node* to_eliminate;
-    Client* to_back;
+    Client to_back;
 
     if (empty()) {
         throw std::out_of_range("Empty_queue_Exception");
@@ -47,13 +47,13 @@ Client* LinkedQueue::dequeue()
         head->next(to_eliminate->next());
         to_back = to_eliminate->data();
         num_people_--;
-        num_products_ -= to_back->get_total_purchases();
+        num_products_ -= to_back.get_total_purchases();
         delete to_eliminate;
     }
     return to_back;
 }
 
-Client* LinkedQueue::front() const
+Client LinkedQueue::front() const
 {
     if (empty()) {
         throw std::out_of_range("Empty_queue_Exception");
@@ -61,7 +61,7 @@ Client* LinkedQueue::front() const
     return head->next()->data();
 }
 
-Client* LinkedQueue::back() const
+Client LinkedQueue::back() const
 {
     if (empty()) {
         throw std::out_of_range("Empty_queue_Exception");

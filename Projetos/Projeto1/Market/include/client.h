@@ -28,7 +28,7 @@ class Client
         *   \param tempo de chegada.
         *   \param tempo de saida.
         */
-        Client(Time* arrival_time);
+        Client(Time& arrival_time);
 
         /*!
         *   Destrutor.
@@ -38,22 +38,22 @@ class Client
         /*!
         *   Define o tempo que o usuario deixara o mercado.
         */
-        void set_exit_time(Time* arrival_time);
+        void set_exit_time(Time& arrival_time);
 
         /*!
         *   \return tempo de chegada na fila.
         */
-        Time* get_arrival_time();
+        const Time get_arrival_time();
 
         /*!
         *   \return tempo de saida na fila.
         */
-        Time* get_exit_time();
+        const Time get_exit_time();
 
         /*!
         *   \return tempo que o cliente passou/vai passar na fila.
         */
-        Time* get_average_time();
+        const Time get_average_time();
 
         /*!
         *   \return tipo de pagamento.
@@ -96,8 +96,8 @@ class Client
         QueueType queue_type_;          /*!< Tipo de fila que o cliente tem preferencia. */
         unsigned int total_purchases_;  /*!< Numero de produtos. */
         double total_purchases_value_;  /*!< Valor de todos os produtos. */
-        Time* arrival_time_;            /*!< Tempo no qual o cliente entrou na fila. */
-        Time* exit_time_;               /*!< Tempo no qual o cliente saira da fila. */
+        Time arrival_time_;            /*!< Tempo no qual o cliente entrou na fila. */
+        Time exit_time_;               /*!< Tempo no qual o cliente saira da fila. */
 
 };
 

@@ -50,7 +50,7 @@ class Market
         *   \param posicao de caixa q se deseja saber a informacao.
         *   \return faturamento medio de caixa em especifico.
         */
-        double get_average_billing(unsigned int index) {
+        double get_average_billing_box(unsigned int index) {
             return box_list->at(index)->get_average_billing();
         }
 
@@ -109,6 +109,13 @@ class Market
             return box_list->at(index)->get_identifier();
         }
 
+        /*!
+        *   \return numero de caixas adicionados ao mercado.
+        */
+        int get_num_of_boxes() {
+            return box_list->size();
+        }
+
     private:
         /*!
         *   \return true se todas as filas estiverem cheias.
@@ -140,14 +147,14 @@ class Market
         void simulate_box();
 
         /*!
-        *   \return tempo do ultimo cliente.
-        */
-        Time* get_last_time();
-
-        /*!
         *   Adiciona cliente.
         */
         void add_client(Client* client);
+
+        /*!
+        *   Define que cliente na compareceu.
+        */
+        void set_dropped_client(Client* client);
 
         CircularList* box_list;                                     /*!< Fila com caixas do mercado. */
         Clock* clock;                                               /*!< Relogio do mercado. */

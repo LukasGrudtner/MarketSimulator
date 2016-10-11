@@ -48,7 +48,7 @@ class MarketBox
         /*!
         *   \return Retorna o tempo medio de espera de um cliente na fila.
         */
-        Time* get_average_service_time();
+        const Time get_average_service_time();
 
         /*!
         *   \return faturamento total do caixa.
@@ -69,7 +69,7 @@ class MarketBox
         *   Adiciona um cliente ao caixa.
         *   \param cliente a ser adicionado.
         */
-        void add_client(Client* client);
+        void add_client(Client& client);
 
         /*!
         *   Retira o primeiro cliente da fila.
@@ -79,12 +79,7 @@ class MarketBox
         /*!
         *   \return o tempo no qual o primeiro cliente vai sair da fila.
         */
-        Time* get_exit_time_of_first_client();
-
-        /*!
-        *   \return o tempo no qual o ultimo cliente vai sair da fila.
-        */
-        Time* get_exit_time_of_last_client();
+        const Time get_exit_time_of_first_client();
 
         /*!
         *   \return o identificador do caixa.
@@ -96,7 +91,7 @@ class MarketBox
         /*!
         *   \return o tempo em segundos referente ao tempo de saida.
         */
-        Time* output_time(Client* client);
+        Time& output_time(Client& client);
 
         LinkedQueue* client_queue;      /*!< Fila com clientes no caixa. */
         std::string identifier_;        /*!< Id do funcionario. */

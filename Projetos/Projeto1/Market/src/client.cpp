@@ -8,7 +8,7 @@ Client::Client()
 
 }
 
-Client::Client(Time* arrival_time)
+Client::Client(Time& arrival_time)
 {
     srand( (unsigned)time(NULL) );
     total_purchases_= 2+ (rand() %98);
@@ -50,28 +50,27 @@ void Client::set_total_purchases_value()
 
 Client::~Client()
 {
-    delete arrival_time_;
-    delete exit_time_;
+
 }
 
-void Client::set_exit_time(Time* exit_time)
+void Client::set_exit_time(Time& exit_time)
 {
     exit_time_ = exit_time;
 }
 
-Time* Client::get_arrival_time()
+const Time Client::get_arrival_time()
 {
     return arrival_time_;
 }
 
-Time* Client::get_exit_time()
+const Time Client::get_exit_time()
 {
     return exit_time_;
 }
 
-Time* Client::get_average_time()
+const Time Client::get_average_time()
 {
-    return new Time(get_exit_time()->get_time_in_seconds() - get_arrival_time()->get_time_in_seconds());
+    return *new Time(get_exit_time().get_time_in_seconds() - get_arrival_time().get_time_in_seconds());
 }
 
 PayType Client::get_pay_type()

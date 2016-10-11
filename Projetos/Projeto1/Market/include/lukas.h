@@ -22,12 +22,12 @@ class Lukas
             LinkedQueue* lqueue = new LinkedQueue();
             auto test_time = new Time();
 
-            Client* client = new Client(test_time);
+            Client* client = new Client(*test_time);
 
             cout << "Empty | 1 = " << lqueue->empty() << endl;
-            lqueue->enqueue(client);
+            lqueue->enqueue(*client);
             cout << "Empty | 0 = " << lqueue->empty() << endl;
-            lqueue->enqueue(client);
+            lqueue->enqueue(*client);
             cout << "Num People | 2 = " << lqueue->num_people() << endl;
             lqueue->dequeue();
             lqueue->dequeue();

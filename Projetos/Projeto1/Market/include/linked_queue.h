@@ -33,25 +33,25 @@ class LinkedQueue
         *   Adiciona um novo cliente no fim da fila.
         *   \param data cliente a ser adicionado
         */
-        void enqueue(Client* data);
+        void enqueue(const Client& data);
 
         /*!
         *   Retorna o priemiro cliente da fila e o retira da mesma.
         *   \return cliente
         */
-        Client* dequeue();
+        Client dequeue();
 
         /*!
         *   Retorna o priemiro cliente da fila.
         *   \return cliente
         */
-        Client* front() const;
+        Client front() const;
 
         /*!
         *   Retorna o ultimo cliente da fila.
         *   \return cliente
         */
-        Client* back() const;
+        Client back() const;
 
         /*!
         *   Retorna true se a fila estiver vazia.
@@ -71,75 +71,82 @@ class LinkedQueue
         */
         std::size_t num_products();
 
-    protected:
-
     private:
+//! Classe Node para referenciar dado e proximo elemento na fila.
+/*!
+*   Na classe Node sao implementados os metodos basicos para a referencia de um dado T e ao proximo Node.
+*/
+class Node {
+ public:
+//! Construtor.
+/*!
+*   Construtor que referencia o dado a ser guardado atraves de parametro.
+*   \param data dado que sera armazenado.
+*/
+        Node(const Client& data):
+            data_{data}
+        {}
+/*!
+*   Construtor vazio.
+*/
+        Node()
+        {}
 
-        //! Classe Node
-        /*! A classe implementa o elemento da lista encadeada,
-        onde cada node possui um atributo de dado e um ponteiro para o próximo elemento. */
-        class Node {  // Elemento
-        public:
-            Node()
-            {}
+//! Construtor.
+/*!
+*   Construtor que referencia o dado a ser guardado e o proximo Node.
+*   \param data dado que sera armazenado.
+*   \param next ponteiro para o proximo Node.
+*/
+        Node(const Client& data, Node* next):
+            data_{data},
+            next_{next}
+        {}
 
-            //! Construtor
-            /*! Método construtor da classe Node com um parâmetro de dados.
-                /param data dado a ser inserido no Node.
-            */
-            explicit Node(Client* data):
-                data_{data}
-            {}
+/*!
+*   Retorna o dado que esta salvo.
+*   \return um T.
+*/
+        Client& data() {
+            return data_;
+        }
 
-            //! Construtor
-            /*! Método construtor da classe Node com dois parâmetros.
-                /param data dado a ser inserido no Node.
-                /param next ponteiro para o próximo Node.
-            */
-            Node(Client* data, Node* next):
-                data_{data},
-                next_{next}
-            {}
-            //! Data
-            /*! Método getter de um Node.
-                /return o dado do elemento.
-            */
-            Client* data() {
-                return data_;
-            }
-            //! Data Const
-            /*! Método getter de um Node, onde o dado retornado não será alterado.
-                /return o dado do elemento.
-            */
-            const Client* data() const {
-                return data_;
-            }
+/*!
+*   Retorna o dado que esta salvo.
+*   \return um T.
+*/
+        const Client& data() const {
+            return data_;
+        }
 
-            //! Next
-            /*! Método getter de um Node.
-                /return o ponteiro para o próximo elemento.
-            */
-            Node* next() {
-                return next_;
-            }
 
-            //! Next
-            /*! Método getter de um Node, onde o ponteiro retornado não será alterado.
-                /return o ponteiro para o próximo elemento.
-            */
-            const Node* next() const {
-                return next_;
-            }
-            //! Next
-            /*! Método setter de um Node.
-                /param um ponteiro, que será o indicador do próximo elemento.
-            */
-            void next(Node* node) {
-                next_ = node;
-            }
+/*!
+*   Retorna o proximo elemento.
+*   \return um Node.
+*/
+        Node* next() {
+            return next_;
+        }
+
+/*!
+*   Retorna o proximo elemento.
+*   \return um Node.
+*/
+        const Node* next() const {
+            return next_;
+        }
+
+/*!
+*   Recebe um ponteiro indicando qual sera o proximo Node.
+*   \param node.
+*/
+        void next(Node* node) {
+            next_ = node;
+        }
+
 
          private:
-            Client* data_;          /*!< Declaração do dado, do tipo T. */
+            Client data_;          /*!< Declaração do dado, do tipo T. */
             Node* next_{nullptr}; /*!< Declaração do próximo Node. */
         };
 
