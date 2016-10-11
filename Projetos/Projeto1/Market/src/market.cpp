@@ -44,13 +44,7 @@ void Market::add_box(std::string nome, unsigned int performance, double salary)
 void Market::start_simulation()
 {
     while(time_of_simulation_->get_time_in_hours() > clock->get_time()->get_time_in_hours()) {
-        box_list->passes_forward();
-        while (box_list->get_data_pointer_element() != nullptr) {
-            if (box_list->get_data_pointer_element()->get_exit_time_of_first_client()->get_time_in_seconds() == clock->get_time()->get_time_in_seconds()) {
-                box_list->get_data_pointer_element()->remove_client();
-            }
-            box_list->passes_forward();
-        }
+        simulate_box();
 
         if (clock->get_time()->get_time_in_seconds() == time_of_next_client->get_time_in_seconds()) {
             Client* client = new Client(clock->get_time());
@@ -70,6 +64,11 @@ void Market::start_simulation()
                 }
             }
         }
+        clock->add_seconds(1u);
+    }
+
+    while (clock->get_time()->get_time_in_seconds() < getMaxSizeQueue e pegar tempo de saida do ultimo) {
+        simulate_box();
         clock->add_seconds(1u);
     }
 }
@@ -131,5 +130,16 @@ void Market::add_client_less_products_queue(Client* client)
         delete client;
     } else {
         aux_less_products->add_client(client);
+    }
+}
+
+void Market::simulate_box()
+{
+    box_list->passes_forward();
+    while (box_list->get_data_pointer_element() != nullptr) {
+        if (box_list->get_data_pointer_element()->get_exit_time_of_first_client()->get_time_in_seconds() == clock->get_time()->get_time_in_seconds()) {
+            box_list->get_data_pointer_element()->remove_client();
+        }
+        box_list->passes_forward();
     }
 }

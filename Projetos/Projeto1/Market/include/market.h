@@ -162,20 +162,22 @@ class Market
             time_of_next_client->add_seconds(average_time_of_arrival_of_clients_->get_time_in_seconds());
         }
 
-        CircularList* box_list;
-        Clock* clock;
-        unsigned int clients_dropped_out;
-        unsigned int max_clients_in_queue_;
-        double billing_lost;
-        std::string market_name_;
-        Time* time_of_simulation_;
-        Time* average_time_of_arrival_of_clients_;
-        Time* time_of_next_client;
-        bool reserve_box;
+        void simulate_box();
 
-        Performance* bad_box_perform = new Performance(60u, 4);
-        Performance* medium_box_perform = new Performance(25u, 2);
-        Performance* good_box_perform = new Performance(10u, 1);
+        CircularList* box_list;                                     /*!< Fila com caixas do mercado. */
+        Clock* clock;                                               /*!< Relogio do mercado. */
+        unsigned int clients_dropped_out;                           /*!< Numero de clientes q deixaram de comprar. */
+        unsigned int max_clients_in_queue_;                         /*!< Maximo de clientes nas filas. */
+        double billing_lost;                                        /*!< Faturamento perdido. */
+        std::string market_name_;                                   /*!< Nome do mercado. */
+        Time* time_of_simulation_;                                  /*!< Tempo de simulacao. */
+        Time* average_time_of_arrival_of_clients_;                  /*!< Tempo de chegada de um novo cliente. */
+        Time* time_of_next_client;                                  /*!< Tempo no qual o proximo cliente chegara. */
+        bool reserve_box;                                           /*!< Se caixa reserva esta disponivel. */
+
+        Performance* bad_box_perform = new Performance(60u, 4);     /*!< Performance ruim para caixas. */
+        Performance* medium_box_perform = new Performance(25u, 2);  /*!< Performance media para caixas. */
+        Performance* good_box_perform = new Performance(10u, 1);    /*!< Performance boa para caixas. */
 
 };
 
