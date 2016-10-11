@@ -4,6 +4,7 @@ Market::Market(std::string market_name,unsigned int time_of_simulation, unsigned
 {
     box_list = new CircularList();
     clock = new Clock();
+    reserve_box = true;
     clients_dropped_out = 0;
     market_name_ = market_name;
     time_of_simulation_ = new Time(time_of_simulation*3600);
@@ -52,65 +53,83 @@ void Market::start_simulation()
         }
 
         if (clock->get_time()->get_time_in_seconds() == time_of_next_client->get_time_in_seconds()) {
-            MarketBox* aux_less_size;
-            MarketBox* aux_less_products;
-
-            if (empty_market()) {
-                //adicionar ou não
-            }
-
-            int less_size_queue = 50;
-            int less_products_queue = 10000000000000;
-
-            box_list->passes_forward();
-            while (box_list->get_data_pointer_element() != nullptr) {
-                if (box_list->get_data_pointer_element()->get_num_of_products_in_queue() < less_products_queue) {
-                    less_products_queue = box_list->get_data_pointer_element()->get_num_of_products_in_queue();
-                    aux_less_products = box_list->get_data_pointer_element();
-                }
-                if (box_list->get_data_pointer_element()->get_num_of_clients_in_queue() < less_size_queue) {
-                    less_size_queue = box_list->get_data_pointer_element()->get_num_of_clients_in_queue();
-                    aux_less_size = box_list->get_data_pointer_element();
-                }
-                box_list->passes_forward();
-            }
-
-            time_of_next_client->add_seconds(average_time_of_arrival_of_clients_->get_time_in_seconds());
             Client* client = new Client(clock->get_time());
 
-            if (client->get_queue_type() == QueueType::less_size) {
-                aux_less_size->add_client(client);
+            if (!full_market()) {
+                if (client->get_queue_type() == QueueType::less_Products) {
+                    add_client_less_products_queue(client);
+                } else {
+                    add_client_less_size_queue(client);
+                }
             } else {
-                aux_less_products->add_client(client);
+                billing_lost += client->get_total_value();
+                delete client;
+                if (reserve_box) {
+                    add_box("Caixa Reserva", 1, 1600);
+                    reserve_box = false;
+                }
             }
-
-            int empty_market = empty_market();
-
-            if (empty_market == true) {
-                //faz nada
-            } else {
-                //chamar novo caixa
-            }
-
-
-
         }
         clock->add_seconds(1u);
     }
 }
 
-bool Market::empty_market()
+bool Market::full_market()
 {
-    bool empty_market = false; // tem vaga == true
+    bool available_market = false;
 
     box_list->passes_forward();
     while (box_list->get_data_pointer_element() != nullptr) {
         if (box_list->get_data_pointer_element()->get_num_of_clients_in_queue() == max_clients_in_queue_){
-            empty_market = false || empty_market;
+            available_market = false || available_market;
         } else {
-            empty_market = true;
+            available_market = true;
         }
         box_list->passes_forward();
     }
-    return empty_market;
+    return !available_market;
+}
+
+void Market::add_client_less_size_queue(Client* client)
+{
+    MarketBox* aux_less_size;
+    int less_size_queue = 50;
+
+    box_list->passes_forward();
+    while (box_list->get_data_pointer_element() != nullptr) {
+        if (box_list->get_data_pointer_element()->get_num_of_clients_in_queue() < less_size_queue) {
+            less_size_queue = box_list->get_data_pointer_element()->get_num_of_clients_in_queue();
+            aux_less_size = box_list->get_data_pointer_element();
+        }
+        box_list->passes_forward();
+    }
+
+    if (aux_less_size->get_num_of_clients_in_queue() == max_clients_in_queue_) {
+        billing_lost += client->get_total_value();
+        delete client;
+    } else {
+        aux_less_size->add_client(client);
+    }
+
+}
+
+void Market::add_client_less_products_queue(Client* client)
+{
+    MarketBox* aux_less_products;
+    int less_products_queue = 10000000000000;
+
+     box_list->passes_forward();
+     while (box_list->get_data_pointer_element() != nullptr) {
+        if (box_list->get_data_pointer_element()->get_num_of_products_in_queue() < less_products_queue) {
+            less_products_queue = box_list->get_data_pointer_element()->get_num_of_products_in_queue();
+            aux_less_products = box_list->get_data_pointer_element();
+        }
+        box_list->passes_forward();
+    }
+    if (aux_less_products->get_num_of_clients_in_queue() == max_clients_in_queue_) {
+        billing_lost += client->get_total_value();
+        delete client;
+    } else {
+        aux_less_products->add_client(client);
+    }
 }

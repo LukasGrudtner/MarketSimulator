@@ -138,11 +138,29 @@ class Market
         }
 
     private:
+        /*!
+        *   \return true se todas as filas estiverem cheias.
+        */
+        bool full_market();
 
         /*!
-        *   \return true se o mercado tiver vaga, e false se nao tiver.
+        *   Reponsavel por adicionar o cliente na fila de menor tamanho.
+        *   \param cliente a ser adicionado em uma das filas.
         */
-        bool empty_market();
+        void add_client_less_size_queue(Client* client);
+
+        /*!
+        *   Reponsavel por adicionar o cliente na fila com menos produtos.
+        *   \param cliente a ser adicionado em uma das filas.
+        */
+        void add_client_less_products_queue(Client* client);
+
+        /*!
+        *   Define tempo de chegada do proximo cliente.
+        */
+        void increase_time_next_client() {
+            time_of_next_client->add_seconds(average_time_of_arrival_of_clients_->get_time_in_seconds());
+        }
 
         CircularList* box_list;
         Clock* clock;
@@ -153,6 +171,7 @@ class Market
         Time* time_of_simulation_;
         Time* average_time_of_arrival_of_clients_;
         Time* time_of_next_client;
+        bool reserve_box;
 
         Performance* bad_box_perform = new Performance(60u, 4);
         Performance* medium_box_perform = new Performance(25u, 2);
