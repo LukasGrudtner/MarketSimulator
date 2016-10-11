@@ -7,13 +7,18 @@
 #include <sstream>
 #include "market.h"
 
+using namespace std;
+
 namespace read {
 
 class Control
 {
     public:
-        void read_market(std::istream &);
-        bool read_comment(std::istream &);
+        Control();
+        void open_file(std::ifstream &);
+        void read_file(std::ifstream &);
+        void close_file(std::ifstream &);
+        bool read_comment(std::ifstream &);
         void insert(std::string buffer[]);
         std::string get_market_name();
         unsigned int get_time_of_simulation_in_hours();
@@ -21,7 +26,8 @@ class Control
         unsigned int get_number_of_market_box();
 
     private:
-        std::string linha;
+        ifstream file;
+        std::string line;
         std::string market_name;
         unsigned int time_of_simulation_in_hours;
         unsigned int average_arrival_time_of_customers_in_seconds;

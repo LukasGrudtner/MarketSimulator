@@ -2,84 +2,88 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip> // Manipulação de entrada e saída
-
 #include <string>
 
 using namespace std;
 
 namespace read {
 
-    auto count = 0u;
-    string buffer[4];
-
-    void Control::read_market(std::istream &in)
+    Control::Control()
     {
+        open_file(file);
+        read_file(file);
+        close_file(file);
 
+        cout << "Market Name: " << get_market_name() << endl
+             << "Time of Simulation (in hours): " << get_time_of_simulation_in_hours() << endl
+             << "Average Arrival Time of Customers (in seconds): " << get_average_arrival_time_of_customers_in_seconds() << endl
+             << "Number of Market Box: " << get_number_of_market_box() << endl;
+    }
+
+    void Control::open_file(std::ifstream &file)
+    {
+        file.open("input.dat");
+
+    }
+
+    void Control::read_file(std::ifstream &file)
+    {
+        auto count = 0u;
+        string buffer[4];
         string name;
-        unsigned int performance;
+        unsigned performance;
         double salary;
 
-
-
-        // Lê linha por linha até o final do arquivo.
-        // Enquanto não encontrar a marca de fim de arquivo:
-
-        for (auto i = 0u; count < 4; ++i) {
-            if (!read_comment(in)) {
-                buffer[count] = linha;
+        while (count < 4) {
+            if (!read_comment(file)) {
+                buffer[count] = line;
                 count++;
             }
         }
 
         insert(buffer);
+
         market = new Market(get_market_name(), get_time_of_simulation_in_hours(), get_average_arrival_time_of_customers_in_seconds(), 10u);
 
-
-        while (!in.eof()) {
-            in >> name >> performance >> salary;
-            if (name[0] != '#' && name[0] != '\n' && !in.eof()) {
-                market->add_box(name, performance, salary);
+        while (!file.eof()) {
+            file >> name >> performance >> salary;
+            if (!file.eof() && name != "") {
+                cout << "Name: " << name << endl
+                     << "Performance: " << performance << endl
+                     << "Salary: " << salary << endl << endl;
             }
+            market->add_box(name, performance, salary);
         }
+    }
 
-
-      std::cout << "Nome Mercado eoq : " << market->get_maket_name() << endl;
-      cout << "Nome caixa 4 : " << market->get_identifier(0) << endl;
-      cout << "Nome caixa 3 : " << market->get_identifier(1) << endl;
-      cout << "Nome caixa 2 : " << market->get_identifier(2) << endl;
-      cout << "Nome caixa 1 : " << market->get_identifier(3) << endl;
-
-     }
-
-    bool Control::read_comment(std::istream &in)
+    void Control::close_file(std::ifstream &file)
     {
-        string test;
+        file.close();
+    }
 
-        auto counter = 0u;
-        getline(in, test);
+    bool Control::read_comment(std::ifstream &file)
+    {
+        auto index = 0u;
+        getline(file, line);
 
-        if (test[0] == '\n')
+        if (line == "" || line == " ")
             return true;
 
-        while (test[counter] == ' ') {
-            counter++;
+        while (line[index] == ' ') {
+            index++;
         }
 
-        if (test[counter] == '#') {
-            linha = "";
+        if (line[index] == '#') {
+            line = "";
             return true;
         } else {
-            linha = test;
             return false;
         }
     }
 
-    // std::stoi -> converte string para inteiro
-
     void Control::insert(string buffer[])
     {
         market_name = buffer[0];
-
 
         istringstream convert(buffer[1]);
         convert >> time_of_simulation_in_hours;
