@@ -143,3 +143,43 @@ void Market::simulate_box()
         box_list->passes_forward();
     }
 }
+
+double Market::get_total_billing()
+{
+    auto total_billing = 0;
+    for (auto i = 0; i < box_list->size() ; i++) {
+        total_billing += box_list->at(i)->get_total_billing();
+    }
+
+    return total_billing;
+}
+
+double Market::get_average_billing()
+{
+    auto average_billing = 0;
+    for (auto i = 0; i < box_list->size() ; i++) {
+        average_billing += box_list->at(i)->get_average_billing();
+    }
+
+    return average_billing/box_list->size();
+}
+
+double Market::get_total_profit()
+{
+    auto total_profit = 0;
+    for (auto i = 0; i < box_list->size() ; i++) {
+        total_profit += box_list->at(i)->get_profit();
+    }
+
+    return total_profit;
+}
+
+double Market::get_average_queue_time_in_seconds()
+{
+    auto total_time = 0;
+    for (auto i = 0; i < box_list->size() ; i++) {
+        total_time += box_list->at(i)->get_average_service_time()->get_time_in_seconds();
+    }
+
+    return total_time/box_list->size();
+}
