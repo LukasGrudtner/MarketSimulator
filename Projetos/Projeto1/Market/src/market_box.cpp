@@ -90,7 +90,23 @@ void MarketBox::remove_client()
 
 Time* MarketBox::get_exit_time_of_first_client()
 {
-    return client_queue->front()->get_exit_time();
+    try {
+        return client_queue->front()->get_exit_time();
+    } catch (std::out_of_range e) {
+        return new Time(-1);
+    }
+
+}
+
+Time* MarketBox::get_exit_time_of_last_client()
+{
+    try {
+        std::cout << "ta aqui o bug" << std::endl;
+        return client_queue->back()->get_exit_time();
+    } catch (std::out_of_range e) {
+
+        return new Time(0);
+    }
 }
 
 std::string MarketBox::get_identifier()

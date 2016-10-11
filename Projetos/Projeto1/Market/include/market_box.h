@@ -82,6 +82,11 @@ class MarketBox
         Time* get_exit_time_of_first_client();
 
         /*!
+        *   \return o tempo no qual o ultimo cliente vai sair da fila.
+        */
+        Time* get_exit_time_of_last_client();
+
+        /*!
         *   \return o identificador do caixa.
         */
         std::string get_identifier();
@@ -93,7 +98,7 @@ class MarketBox
         */
         Time* output_time(Client* client);
 
-        LinkedQueue* client_queue;       /*!< Fila com clientes no caixa. */
+        LinkedQueue* client_queue;      /*!< Fila com clientes no caixa. */
         std::string identifier_;        /*!< Id do funcionario. */
         Performance* performance_;      /*!< Performace do caixa. */
         unsigned int clients_served;    /*!< Numero de clientes que ja foram atendidos. */

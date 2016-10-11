@@ -1,5 +1,7 @@
 #include "market.h"
 
+#include <iostream>
+
 Market::Market(std::string market_name,unsigned int time_of_simulation, unsigned int average_time_of_arrival_of_clients, unsigned int max_clients_in_queue)
 {
     box_list = new CircularList();
@@ -43,6 +45,9 @@ void Market::add_box(std::string nome, unsigned int performance, double salary)
 
 void Market::start_simulation()
 {
+    Client* initial_client = new Client(clock->get_time());
+    add_client(initial_client);
+
     while(time_of_simulation_->get_time_in_hours() > clock->get_time()->get_time_in_hours()) {
         simulate_box();
 
@@ -50,11 +55,7 @@ void Market::start_simulation()
             Client* client = new Client(clock->get_time());
 
             if (!full_market()) {
-                if (client->get_queue_type() == QueueType::less_Products) {
-                    add_client_less_products_queue(client);
-                } else {
-                    add_client_less_size_queue(client);
-                }
+                add_client(client);
             } else {
                 billing_lost += client->get_total_value();
                 delete client;
@@ -67,7 +68,7 @@ void Market::start_simulation()
         clock->add_seconds(1u);
     }
 
-    while (clock->get_time()->get_time_in_seconds() < getMaxSizeQueue e pegar tempo de saida do ultimo) {
+    while (clock->get_time()->get_time_in_seconds() < get_last_time()->get_time_in_seconds()) {
         simulate_box();
         clock->add_seconds(1u);
     }
@@ -78,7 +79,7 @@ bool Market::full_market()
     bool available_market = false;
 
     box_list->passes_forward();
-    while (box_list->get_data_pointer_element() != nullptr) {
+    while (box_list->get_data_pointer_element()->get_identifier() != "sentinel") {
         if (box_list->get_data_pointer_element()->get_num_of_clients_in_queue() == max_clients_in_queue_){
             available_market = false || available_market;
         } else {
@@ -92,16 +93,14 @@ bool Market::full_market()
 void Market::add_client_less_size_queue(Client* client)
 {
     MarketBox* aux_less_size;
-    int less_size_queue = 50;
-
+    int less_size = 50;
     box_list->passes_forward();
-    while (box_list->get_data_pointer_element() != nullptr) {
-        if (box_list->get_data_pointer_element()->get_num_of_clients_in_queue() < less_size_queue) {
-            less_size_queue = box_list->get_data_pointer_element()->get_num_of_clients_in_queue();
+    while (box_list->get_data_pointer_element()->get_identifier() != "sentinel") {
+        if (box_list->get_data_pointer_element()->get_num_of_clients_in_queue() < less_size) {
+            less_size = box_list->get_data_pointer_element()->get_num_of_clients_in_queue();
             aux_less_size = box_list->get_data_pointer_element();
         }
-        box_list->passes_forward();
-    }
+        box_list->passes_forward();    }
 
     if (aux_less_size->get_num_of_clients_in_queue() == max_clients_in_queue_) {
         billing_lost += client->get_total_value();
@@ -115,12 +114,12 @@ void Market::add_client_less_size_queue(Client* client)
 void Market::add_client_less_products_queue(Client* client)
 {
     MarketBox* aux_less_products;
-    int less_products_queue = 10000000000000;
+    int less_products = 10000000000000;
 
      box_list->passes_forward();
-     while (box_list->get_data_pointer_element() != nullptr) {
-        if (box_list->get_data_pointer_element()->get_num_of_products_in_queue() < less_products_queue) {
-            less_products_queue = box_list->get_data_pointer_element()->get_num_of_products_in_queue();
+     while (box_list->get_data_pointer_element()->get_identifier() != "sentinel") {
+        if (box_list->get_data_pointer_element()->get_num_of_products_in_queue() < less_products) {
+            less_products = box_list->get_data_pointer_element()->get_num_of_products_in_queue();
             aux_less_products = box_list->get_data_pointer_element();
         }
         box_list->passes_forward();
@@ -136,8 +135,7 @@ void Market::add_client_less_products_queue(Client* client)
 void Market::simulate_box()
 {
     box_list->passes_forward();
-    while (box_list->get_data_pointer_element() != nullptr) {
-        if (box_list->get_data_pointer_element()->get_exit_time_of_first_client()->get_time_in_seconds() == clock->get_time()->get_time_in_seconds()) {
+    while (box_list->get_data_pointer_element()->get_identifier() != "sentinel") {        if (box_list->get_data_pointer_element()->get_exit_time_of_first_client()->get_time_in_seconds() == clock->get_time()->get_time_in_seconds()) {
             box_list->get_data_pointer_element()->remove_client();
         }
         box_list->passes_forward();
@@ -182,4 +180,32 @@ double Market::get_average_queue_time_in_seconds()
     }
 
     return total_time/box_list->size();
+}
+
+Time* Market::get_last_time()
+{
+    MarketBox* aux_more_size;
+    int more_size = 0;
+
+
+    box_list->passes_forward();
+    while (box_list->get_data_pointer_element()->get_identifier() != "sentinel") {
+        if (box_list->get_data_pointer_element()->get_num_of_clients_in_queue() > more_size) {
+            more_size = box_list->get_data_pointer_element()->get_num_of_clients_in_queue();
+            aux_more_size = box_list->get_data_pointer_element();
+        }
+        box_list->passes_forward();
+    }
+
+    return aux_more_size->get_exit_time_of_last_client();
+}
+
+void Market::add_client(Client* client)
+{
+    if (client->get_queue_type() == QueueType::less_size) {
+        add_client_less_size_queue(client);
+    } else {
+        add_client_less_products_queue(client);
+    }
+
 }

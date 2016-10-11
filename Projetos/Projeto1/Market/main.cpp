@@ -17,24 +17,24 @@ int main()
 
 
 
-       //     TestLuiz* testes = new TestLuiz();
+            TestLuiz* testes = new TestLuiz();
       //      Lukas* lks = new Lukas();
 
-    using namespace read;
+    //using namespace read;
     //std::ifstream ss{"input.txt"};
-    std::ifstream ss;
-    ss.open("input.dat");
+    //std::ifstream ss;
+    //ss.open("input.dat");
 
 
-    Control* user = new Control();
-    user->read_market(ss);
+    //Control* user = new Control();
+    //user->read_market(ss);
 
     // Fecha o arquivo
-    ss.close();
+    //ss.close();
 
-    cout << "Market Name: " << user->get_market_name() << "\n"
-         << "Time of Simulation (in hours): " << user->get_time_of_simulation_in_hours() << "\n"
-         << "Average Arrival Time of Customers (in seconds): " << user->get_average_arrival_time_of_customers_in_seconds() << "\n"
-         << "Number of Market Box: " << user->get_number_of_market_box() << "\n";
+    //cout << "Market Name: " << user->get_market_name() << "\n"
+     //    << "Time of Simulation (in hours): " << user->get_time_of_simulation_in_hours() << "\n"
+     //    << "Average Arrival Time of Customers (in seconds): " << user->get_average_arrival_time_of_customers_in_seconds() << "\n"
+     //    << "Number of Market Box: " << user->get_number_of_market_box() << "\n";
 
 }

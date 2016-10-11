@@ -139,6 +139,16 @@ class Market
         */
         void simulate_box();
 
+        /*!
+        *   \return tempo do ultimo cliente.
+        */
+        Time* get_last_time();
+
+        /*!
+        *   Adiciona cliente.
+        */
+        void add_client(Client* client);
+
         CircularList* box_list;                                     /*!< Fila com caixas do mercado. */
         Clock* clock;                                               /*!< Relogio do mercado. */
         unsigned int clients_dropped_out;                           /*!< Numero de clientes q deixaram de comprar. */

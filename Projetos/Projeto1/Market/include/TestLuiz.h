@@ -10,6 +10,7 @@
 #include "market_box.h"
 #include "client.h"
 #include "linked_queue.h"
+#include "market.h"
 
 using namespace std;
 
@@ -78,6 +79,49 @@ class TestLuiz
             cout << "Tamanho com um elemento: 0 = " << circular->size() << endl;
             cout << "Vazio: true = " << circular->empty() << endl;
 
+            Performance* performTest = new Performance(10u, 1);
+
+            MarketBox* caixaA = new MarketBox("CaixaA", performTest, 800);
+            MarketBox* caixaB = new MarketBox("CaixaB", performTest, 1000);
+            MarketBox* caixaC = new MarketBox("CaixaC", performTest, 1200);
+
+            circular->push_front(caixaA);
+            circular->push_front(caixaB);
+            circular->push_front(caixaC);
+
+            cout << "Tres caixas adicionados: 3 = " << circular->size() << endl;
+
+            circular->passes_forward();
+            MarketBox* auxTeste = circular->get_data_pointer_element();
+
+            cout << "Primeiro caixa circulando lista: " << auxTeste->get_identifier() << endl;
+            circular->passes_forward();
+            auxTeste = circular->get_data_pointer_element();
+            cout << "Segundo caixa circulando lista: " << auxTeste->get_identifier() << endl;
+            circular->passes_forward();
+            auxTeste = circular->get_data_pointer_element();
+            cout << "Terceiro caixa circulando lista: " << auxTeste->get_identifier() << endl;
+
+            circular->passes_forward();
+            auxTeste = circular->get_data_pointer_element();
+
+            if (circular->get_data_pointer_element()->get_identifier() == "sentinel") {
+                cout << "sentinela" << endl;
+            } else {
+                cout << "algo de errado nao esta certo" << endl;
+            }
+            circular->passes_forward();
+            auxTeste = circular->get_data_pointer_element();
+             cout << "Terceiro caixa circulando lista: " << auxTeste->get_identifier() << endl;
+
+
+
+
+
+            delete performTest;
+            delete caixaA;
+            delete caixaB;
+            delete caixaC;
             delete circular;
             delete marketBox;
 
@@ -198,6 +242,17 @@ class TestLuiz
             delete caixaMedio;
             delete caixaRuim;
             delete tempoChegada;
+
+            cout << "\n============Test7=============   Teste Market" << endl;
+
+            Market* market = new Market("Teste", 1u, 60, 2);
+
+            market->add_box("Joao", 1, 300);
+            market->add_box("Pedro", 2, 300);
+            market->add_box("Anna", 3, 300);
+
+            market->start_simulation();
+
 
 
 

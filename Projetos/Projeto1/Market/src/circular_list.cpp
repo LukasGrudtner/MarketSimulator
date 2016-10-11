@@ -3,7 +3,9 @@
 CircularList::CircularList()
 {
     size_ = 0u;
-    sentinel = new Node();
+    Performance* perform_sentinel = new Performance(10u, 1);
+    MarketBox* box_sentinel = new MarketBox("sentinel", perform_sentinel, 0);
+    sentinel = new Node(box_sentinel);
     pointer = new Node();
     pointer->next(sentinel);
 }
@@ -33,6 +35,8 @@ void CircularList::push_front(MarketBox* data)
 
     if (!empty()) {
         new_Node->next(sentinel->next());
+    } else {
+        new_Node->next(sentinel);
     }
     sentinel->next(new_Node);
     size_++;
@@ -154,5 +158,5 @@ void CircularList::passes_forward()
 
 MarketBox* CircularList::get_data_pointer_element()
 {
-        return pointer->next()->data();
+    return pointer->next()->data();
 }
