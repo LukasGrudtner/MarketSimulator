@@ -38,14 +38,14 @@ class CircularList
         *   \param data dado a ser adicionado.
         *   \sa insert()
         */
-        void push_back(const MarketBox& data);
+        void push_back(MarketBox* data);
 
         /*!
         *  Adiciona fila no começo.
         *   \param data dado a ser adicionado.
         *   \sa empty()
         */
-        void push_front(const MarketBox& data);
+        void push_front(MarketBox* data);
 
         /*!
         *   Insere dado em uma posicao n.
@@ -53,21 +53,21 @@ class CircularList
         *   \param index posicao q sera adicionado.
         *   \sa push_front
         */
-        void insert(const MarketBox& data, std::size_t index);
+        void insert(MarketBox* data, std::size_t index);
 
         /*!
         *   Insere dado de forma ordenada.
         *   \param data dado a ser adicionado
         *   \sa insert(), push_front()
         */
-        void insert_sorted(const MarketBox& data);
+        void insert_sorted(MarketBox* data);
 
         /*!
         *   Retorna dado.
         *   \param index posicao do dado a ser retornado.
         *   \return dado.
         */
-        const MarketBox& at(std::size_t index) const;
+        MarketBox* at(std::size_t index) const;
 
         /*!
         *   Retira e retorna dado.
@@ -75,20 +75,20 @@ class CircularList
         *   \return dado retirado.
         *   \sa pop_front()
         */
-        MarketBox pop(std::size_t index);
+        MarketBox* pop(std::size_t index);
 
         /*!
         *   Retira e retorna dado do final.
         *   \return dado retirado.
         *   \sa pop()
         */
-        MarketBox pop_back();
+        MarketBox* pop_back();
 
         /*!
         *   Retira e retorna dado do inicio.
         *   \return dado retirado.
         */
-        MarketBox pop_front();
+        MarketBox* pop_front();
 
         /*!
         *   Retorna true se a lista estiver vazia.
@@ -109,7 +109,7 @@ class CircularList
         /*!
         *   \return elemento do ponteiro.
         */
-        MarketBox get_data_pointer_element();
+        MarketBox* get_data_pointer_element();
 
     private:
 //! Classe Node para referenciar dado e proximo elemento na fila.
@@ -123,13 +123,11 @@ class Node {
 *   Construtor que referencia o dado a ser guardado atraves de parametro.
 *   \param data dado que sera armazenado.
 */
-        explicit Node(const MarketBox& data):
+        explicit Node(MarketBox* data):
             data_{data}
         {}
 
-/*!
-*   Construtor
-*/
+//! Construtor.
         Node()
         {}
 
@@ -139,7 +137,7 @@ class Node {
 *   \param data dado que sera armazenado.
 *   \param next ponteiro para o proximo Node.
 */
-        Node(const MarketBox& data, Node* next):
+        Node(MarketBox* data, Node* next):
             data_{data},
             next_{next}
         {}
@@ -148,7 +146,7 @@ class Node {
 *   Retorna o dado que esta salvo.
 *   \return um T.
 */
-        MarketBox& data() {
+        MarketBox* data() {
             return data_;
         }
 
@@ -156,7 +154,7 @@ class Node {
 *   Retorna o dado que esta salvo.
 *   \return um T.
 */
-        const MarketBox& data() const {
+        MarketBox* data() const {
             return data_;
         }
 
@@ -186,7 +184,7 @@ class Node {
         }
 
  private:
-        MarketBox data_;       /*!< Dado contido. */
+        MarketBox* data_;       /*!< Dado contido. */
         Node* next_{nullptr};   /*!< Proximo Node. */
 };
         Node* pointer;          /*!< Usado como ponteiro para algum lugar na lista. */

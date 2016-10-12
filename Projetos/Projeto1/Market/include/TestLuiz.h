@@ -32,28 +32,28 @@ class TestLuiz
 
             Clock* clock = new Clock();
 
-            cout << "Tempo inicial: 0 = " << clock->get_time().get_time_in_seconds() << endl;
+            cout << "Tempo inicial: 0 = " << clock->get_time()->get_time_in_seconds() << endl;
 
             clock->set_one_more_second();
 
-            cout << "Tempo dps de um segundo: 1 = " << clock->get_time().get_time_in_seconds() << endl;
+            cout << "Tempo dps de um segundo: 1 = " << clock->get_time()->get_time_in_seconds() << endl;
 
             clock->set_one_more_second();
 
-            cout << "Tempo dps de dois segundos: 2 = " << clock->get_time().get_time_in_seconds() << endl;
+            cout << "Tempo dps de dois segundos: 2 = " << clock->get_time()->get_time_in_seconds() << endl;
 
             clock->add_seconds(8u);
 
-            cout << "Tempo dps de 10 segundos: 10 = " << clock->get_time().get_time_in_seconds() << endl;
+            cout << "Tempo dps de 10 segundos: 10 = " << clock->get_time()->get_time_in_seconds() << endl;
 
             clock->add_seconds(50u);
 
-            cout << "Tempo dps de 1 minuto em minutos: 1 = " << clock->get_time().get_time_in_minutes() << endl;
+            cout << "Tempo dps de 1 minuto em minutos: 1 = " << clock->get_time()->get_time_in_minutes() << endl;
 
             clock->add_seconds(59u*60u);
 
-            cout << "Tempo dps de 1 hora em horas: 1 = " << clock->get_time().get_time_in_hours() << endl;
-            cout << "Tempo dps de 1 hora em minutos: 60 = " << clock->get_time().get_time_in_minutes() << endl;
+            cout << "Tempo dps de 1 hora em horas: 1 = " << clock->get_time()->get_time_in_hours() << endl;
+            cout << "Tempo dps de 1 hora em minutos: 60 = " << clock->get_time()->get_time_in_minutes() << endl;
 
             delete clock;
 
@@ -69,7 +69,7 @@ class TestLuiz
             cout << "Vazio: true = " << circular->empty() << endl;
 
 
-            circular->push_front(*marketBox);
+            circular->push_front(marketBox);
 
             cout << "Tamanho com um elemento: 1 = " << circular->size() << endl;
             cout << "Vazio: false = " << circular->empty() << endl;
@@ -85,34 +85,34 @@ class TestLuiz
             MarketBox* caixaB = new MarketBox("CaixaB", performTest, 1000);
             MarketBox* caixaC = new MarketBox("CaixaC", performTest, 1200);
 
-            circular->push_front(*caixaA);
-            circular->push_front(*caixaB);
-            circular->push_front(*caixaC);
+            circular->push_front(caixaA);
+            circular->push_front(caixaB);
+            circular->push_front(caixaC);
 
             cout << "Tres caixas adicionados: 3 = " << circular->size() << endl;
 
             circular->passes_forward();
-            MarketBox auxTeste = circular->get_data_pointer_element();
+            MarketBox* auxTeste = circular->get_data_pointer_element();
 
-            cout << "Primeiro caixa circulando lista: " << auxTeste.get_identifier() << endl;
+            cout << "Primeiro caixa circulando lista: " << auxTeste->get_identifier() << endl;
             circular->passes_forward();
             auxTeste = circular->get_data_pointer_element();
-            cout << "Segundo caixa circulando lista: " << auxTeste.get_identifier() << endl;
+            cout << "Segundo caixa circulando lista: " << auxTeste->get_identifier() << endl;
             circular->passes_forward();
             auxTeste = circular->get_data_pointer_element();
-            cout << "Terceiro caixa circulando lista: " << auxTeste.get_identifier() << endl;
+            cout << "Terceiro caixa circulando lista: " << auxTeste->get_identifier() << endl;
 
             circular->passes_forward();
             auxTeste = circular->get_data_pointer_element();
 
-            if (circular->get_data_pointer_element().get_identifier() == "sentinel") {
+            if (circular->get_data_pointer_element()->get_identifier() == "sentinel") {
                 cout << "sentinela" << endl;
             } else {
                 cout << "algo de errado nao esta certo" << endl;
             }
             circular->passes_forward();
             auxTeste = circular->get_data_pointer_element();
-             cout << "Terceiro caixa circulando lista: " << auxTeste.get_identifier() << endl;
+             cout << "Terceiro caixa circulando lista: " << auxTeste->get_identifier() << endl;
 
 
 
@@ -270,7 +270,7 @@ class TestLuiz
                 cout << market->get_profit(i) << endl;
             }
             cout << "-------------\n";
-            cout << "O tempo medio de permanencia de um cliente na fila eh de: " << market->get_average_queue_time_in_seconds() << endl;
+           cout << "O tempo medio de permanencia de um cliente na fila eh de: " << market->get_average_queue_time_in_seconds() << endl;
             cout << "Numero de clientes que desistiram: " << market->get_dropped_out() << endl;
             cout << "Faturamento que deixou de ser realizado: " << market->get_billing_lost() << endl;
             cout << "Nome do Mercado: " << market->get_maket_name() << endl;
