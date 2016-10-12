@@ -130,9 +130,9 @@ void Market::simulate_box()
     }
 }
 
-double Market::get_total_billing()
+long int Market::get_total_billing()
 {
-    double total_billing = 0;
+    long int total_billing = 0;
 
     box_list->passes_forward();
     while (box_list->get_data_pointer_element()->get_identifier() != "sentinel") {
@@ -143,9 +143,9 @@ double Market::get_total_billing()
     return total_billing;
 }
 
-double Market::get_average_billing()
+long int Market::get_average_billing()
 {
-    auto average_billing = 0;
+    long int average_billing = 0;
     for (auto i = 0; i < box_list->size() ; i++) {
         average_billing += box_list->at(i)->get_average_billing();
     }
@@ -153,9 +153,9 @@ double Market::get_average_billing()
     return average_billing/box_list->size();
 }
 
-double Market::get_total_profit()
+long int Market::get_total_profit()
 {
-    auto total_profit = 0;
+    long int total_profit = 0;
     for (auto i = 0; i < box_list->size() ; i++) {
         total_profit += box_list->at(i)->get_profit();
     }
@@ -163,15 +163,13 @@ double Market::get_total_profit()
     return total_profit;
 }
 
-double Market::get_average_queue_time_in_seconds()
+long int Market::get_average_queue_time_in_seconds()
 {
-
-    auto total_time = 0;
+    long int total_time = 0;
 
     box_list->passes_forward();
     while (box_list->get_data_pointer_element()->get_identifier() != "sentinel") {
         total_time += box_list->get_data_pointer_element()->get_average_service_time().get_time_in_seconds();
-      //  std::cout << "get_average_queue_time_in_seconds" << endl;
         box_list->passes_forward();
     }
 

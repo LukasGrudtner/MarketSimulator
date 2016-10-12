@@ -39,18 +39,18 @@ class Market
         /*!
         *   \return faturamento total.
         */
-        double get_total_billing();
+        long int get_total_billing();
 
         /*!
         *   \return faturamento medio por caixa  .
         */
-        double get_average_billing();
+        long int get_average_billing();
 
         /*!
         *   \param posicao de caixa q se deseja saber a informacao.
         *   \return faturamento medio de caixa em especifico.
         */
-        double get_average_billing_box(unsigned int index) {
+        long int get_average_billing_box(unsigned int index) {
             return box_list->at(index)->get_average_billing();
         }
 
@@ -58,27 +58,27 @@ class Market
         *   \param posicao de caixa q se deseja saber a informacao.
         *   \return faturamento total de caixa em especifico.
         */
-        double get_billing(unsigned int index) {
+        long int get_billing(unsigned int index) {
             return box_list->at(index)->get_total_billing();
         }
 
         /*!
         *   \return lucro total.
         */
-        double get_total_profit();
+        long int get_total_profit();
 
         /*!
         *   \param posicao de caixa q se deseja saber a informacao.
         *   \return lucro provido por determinado caixa.
         */
-        double get_profit(unsigned int index) {
+        long int get_profit(unsigned int index) {
             return box_list->at(index)->get_profit();
         }
 
         /*!
         *   \return tempo medio que um cliente passa na fila ao chegar nesse mercado.
         */
-        double get_average_queue_time_in_seconds();
+        long int get_average_queue_time_in_seconds();
 
         /*!
         *   \return numero de clientes q desistiram.
@@ -90,7 +90,7 @@ class Market
         /*!
         *   \return faturamento que deixou de ser realizado.
         */
-        double get_billing_lost() {
+        long int get_billing_lost() {
             return billing_lost;
         }
 

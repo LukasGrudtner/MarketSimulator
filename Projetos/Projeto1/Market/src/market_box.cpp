@@ -40,27 +40,38 @@ unsigned int MarketBox::get_num_of_clients_served()
 
 const Time MarketBox::get_average_service_time()
 {
-    return * new Time(total_hold_time->get_time_in_seconds()/clients_served);
+    if (clients_served+client_queue->num_people() != 0) {
+        return * new Time(total_hold_time->get_time_in_seconds()/(clients_served+client_queue->num_people()));
+    } else {
+        return * new Time(0);
+    }
 }
 
-double MarketBox::get_total_billing()
+long int MarketBox::get_total_billing()
 {
     return total_billing;
 }
 
-double MarketBox::get_average_billing()
+long int MarketBox::get_average_billing()
 {
-    return total_billing/clients_served;
+    if (clients_served+client_queue->num_people() != 0) {
+        return total_billing/(clients_served+client_queue->num_people());
+    } else {
+        return 0;
+    }
 }
 
-double MarketBox::get_profit()
+long int MarketBox::get_profit()
 {
     return total_billing - salary_;
 }
 
 void MarketBox::add_client(Client& client)
 {
+
     client.set_exit_time(output_time(client));
+    total_billing += client.get_total_value();
+    total_hold_time->add_seconds(client.get_average_time().get_time_in_seconds());
     client_queue->enqueue(client);
 }
 
@@ -82,7 +93,6 @@ Time& MarketBox::output_time(Client& client)
 
 void MarketBox::remove_client()
 {
-    total_billing += client_queue->front().get_total_value();
     clients_served++;
     client_queue->dequeue();
 }

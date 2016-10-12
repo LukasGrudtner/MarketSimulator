@@ -2,6 +2,7 @@
 #include <time.h>
 
 #include "client.h"
+#include <iostream>
 
 Client::Client()
 {
@@ -10,7 +11,7 @@ Client::Client()
 
 Client::Client(Time& arrival_time)
 {
-    srand( (unsigned)time(NULL) );
+    srand(time(0));
     total_purchases_= 2+ (rand() %98);
     set_total_purchases_value();
     set_pay_type();
@@ -43,9 +44,8 @@ void Client::set_pay_type()
 void Client::set_total_purchases_value()
 {
     for (auto i = 0; i < total_purchases_; i++) {
-        total_purchases_value_ += (1 + (rand()%8900));
+        total_purchases_value_ += (1 + (rand()%89));
     }
-    total_purchases_value_ = total_purchases_value_/100;
 }
 
 Client::~Client()
@@ -88,7 +88,7 @@ unsigned int Client::get_total_purchases()
     return total_purchases_;
 }
 
-double Client::get_total_value()
+long int Client::get_total_value()
 {
     return total_purchases_value_;
 }

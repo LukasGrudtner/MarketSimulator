@@ -16,9 +16,9 @@ int main()
 {
     using namespace read;
 
-    Control* control = new Control();
+//    Control* control = new Control();
 
-    //TestLuiz* testes = new TestLuiz();
+    TestLuiz* testes = new TestLuiz();
     //Lukas* lks = new Lukas();
 
 

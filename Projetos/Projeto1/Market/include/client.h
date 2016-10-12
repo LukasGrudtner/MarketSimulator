@@ -73,7 +73,7 @@ class Client
         /*!
         *   \return valor total.
         */
-        double get_total_value();
+        long int get_total_value();
 
     private:
 
@@ -95,7 +95,7 @@ class Client
         PayType pay_type_;              /*!< Tipo de pagamento do cliente. */
         QueueType queue_type_;          /*!< Tipo de fila que o cliente tem preferencia. */
         unsigned int total_purchases_;  /*!< Numero de produtos. */
-        double total_purchases_value_;  /*!< Valor de todos os produtos. */
+        int total_purchases_value_;  /*!< Valor de todos os produtos. */
         Time arrival_time_;            /*!< Tempo no qual o cliente entrou na fila. */
         Time exit_time_;               /*!< Tempo no qual o cliente saira da fila. */
 

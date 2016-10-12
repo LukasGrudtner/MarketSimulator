@@ -53,17 +53,17 @@ class MarketBox
         /*!
         *   \return faturamento total do caixa.
         */
-        double get_total_billing();
+        long int get_total_billing();
 
         /*!
         *   \return faturamento medio do caixa.
         */
-        double get_average_billing();
+        long int get_average_billing();
 
         /*!
         *   \return lucro do caixa.
         */
-        double get_profit();
+        long int get_profit();
 
         /*!
         *   Adiciona um cliente ao caixa.
@@ -98,8 +98,8 @@ class MarketBox
         Performance* performance_;      /*!< Performace do caixa. */
         unsigned int clients_served;    /*!< Numero de clientes que ja foram atendidos. */
         Time* total_hold_time;          /*!< Tempo total de espera. */
-        double total_billing;           /*!< Faturamento total. */
-        double salary_;                 /*!< Salario do caixa. */
+        int total_billing;           /*!< Faturamento total. */
+        int salary_;                 /*!< Salario do caixa. */
 };
 
 #endif // MARKETBOX_H
