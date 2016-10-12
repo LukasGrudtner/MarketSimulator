@@ -28,7 +28,7 @@ class Client
         *   \param tempo de chegada.
         *   \param tempo de saida.
         */
-        Client(Time& arrival_time);
+        Client(const Time& arrival_time);
 
         /*!
         *   Destrutor.
@@ -58,12 +58,12 @@ class Client
         /*!
         *   \return tipo de pagamento.
         */
-        PayType get_pay_type();
+        const PayType get_pay_type();
 
         /*!
         *   \return tipo de fila.
         */
-        QueueType get_queue_type();
+        const QueueType get_queue_type();
 
         /*!
         *   \return total de compras.

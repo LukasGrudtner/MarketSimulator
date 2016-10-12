@@ -50,8 +50,8 @@ class Market
         *   \param posicao de caixa q se deseja saber a informacao.
         *   \return faturamento medio de caixa em especifico.
         */
-        double get_average_billing_box(unsigned int index) {
-            return box_list->at(index)->get_average_billing();
+        const double get_average_billing_box(unsigned int index) {
+            return box_list->at(index).get_average_billing();
         }
 
         /*!
@@ -59,7 +59,7 @@ class Market
         *   \return faturamento total de caixa em especifico.
         */
         double get_billing(unsigned int index) {
-            return box_list->at(index)->get_total_billing();
+            return box_list->at(index).get_total_billing();
         }
 
         /*!
@@ -72,7 +72,7 @@ class Market
         *   \return lucro provido por determinado caixa.
         */
         double get_profit(unsigned int index) {
-            return box_list->at(index)->get_profit();
+            return box_list->at(index).get_profit();
         }
 
         /*!
@@ -106,7 +106,7 @@ class Market
         *   \return identificador do caixa.
         */
         std::string get_identifier(unsigned int index) {
-            return box_list->at(index)->get_identifier();
+            return box_list->at(index).get_identifier();
         }
 
         /*!
@@ -126,13 +126,13 @@ class Market
         *   Reponsavel por adicionar o cliente na fila de menor tamanho.
         *   \param cliente a ser adicionado em uma das filas.
         */
-        void add_client_less_size_queue(Client* client);
+        void add_client_less_size_queue(Client& client);
 
         /*!
         *   Reponsavel por adicionar o cliente na fila com menos produtos.
         *   \param cliente a ser adicionado em uma das filas.
         */
-        void add_client_less_products_queue(Client* client);
+        void add_client_less_products_queue(Client& client);
 
         /*!
         *   Define tempo de chegada do proximo cliente.
@@ -149,12 +149,12 @@ class Market
         /*!
         *   Adiciona cliente.
         */
-        void add_client(Client* client);
+        void add_client(Client& client);
 
         /*!
         *   Define que cliente na compareceu.
         */
-        void set_dropped_client(Client* client);
+        void set_dropped_client(Client& client);
 
         CircularList* box_list;                                     /*!< Fila com caixas do mercado. */
         Clock* clock;                                               /*!< Relogio do mercado. */

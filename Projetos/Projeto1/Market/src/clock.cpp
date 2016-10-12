@@ -20,7 +20,7 @@ void Clock::set_one_more_second()
     time->add_seconds(1);
 }
 
-Time* Clock::get_time() const
+const Time Clock::get_time() const
 {
-    return time;
+    return *time;
 }

@@ -53,17 +53,17 @@ class MarketBox
         /*!
         *   \return faturamento total do caixa.
         */
-        double get_total_billing();
+        double get_total_billing() const;
 
         /*!
         *   \return faturamento medio do caixa.
         */
-        double get_average_billing();
+        double get_average_billing() const;
 
         /*!
         *   \return lucro do caixa.
         */
-        double get_profit();
+        double get_profit() const;
 
         /*!
         *   Adiciona um cliente ao caixa.
@@ -84,7 +84,7 @@ class MarketBox
         /*!
         *   \return o identificador do caixa.
         */
-        std::string get_identifier();
+        std::string get_identifier() const;
 
 
     private:

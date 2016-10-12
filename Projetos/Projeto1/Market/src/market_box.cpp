@@ -40,20 +40,20 @@ unsigned int MarketBox::get_num_of_clients_served()
 
 const Time MarketBox::get_average_service_time()
 {
-    return * new Time(total_hold_time->get_time_in_seconds()/clients_served);
+    return * new Time(total_hold_time->get_time_in_seconds()/(clients_served+client_queue->num_people()));
 }
 
-double MarketBox::get_total_billing()
+double MarketBox::get_total_billing() const
 {
     return total_billing;
 }
 
-double MarketBox::get_average_billing()
+double MarketBox::get_average_billing() const
 {
     return total_billing/clients_served;
 }
 
-double MarketBox::get_profit()
+double MarketBox::get_profit() const
 {
     return total_billing - salary_;
 }
@@ -61,6 +61,7 @@ double MarketBox::get_profit()
 void MarketBox::add_client(Client& client)
 {
     client.set_exit_time(output_time(client));
+    total_hold_time->add_seconds(client.get_average_time().get_time_in_seconds());
     client_queue->enqueue(client);
 }
 
@@ -97,7 +98,7 @@ const Time MarketBox::get_exit_time_of_first_client()
 
 }
 
-std::string MarketBox::get_identifier()
+std::string MarketBox::get_identifier() const
 {
     return identifier_;
 }

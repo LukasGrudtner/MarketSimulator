@@ -8,7 +8,7 @@ Client::Client()
 
 }
 
-Client::Client(Time& arrival_time)
+Client::Client(const Time& arrival_time)
 {
     srand( (unsigned)time(NULL) );
     total_purchases_= 2+ (rand() %98);
@@ -73,12 +73,12 @@ const Time Client::get_average_time()
     return *new Time(get_exit_time().get_time_in_seconds() - get_arrival_time().get_time_in_seconds());
 }
 
-PayType Client::get_pay_type()
+const PayType Client::get_pay_type()
 {
     return pay_type_;
 }
 
-QueueType Client::get_queue_type()
+const QueueType Client::get_queue_type()
 {
     return queue_type_;
 }
