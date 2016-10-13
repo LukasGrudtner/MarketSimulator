@@ -1,3 +1,11 @@
+/*!
+ *  \author Luiz Felipe Ribeiro Baroncello
+ *  \author Lukas Derner Grüdtner
+ *  \version 1.0
+ *  \copyright General Public License version 2
+ *
+ */
+
 #ifndef CONTROL_H
 #define CONTROL_H
 
@@ -13,7 +21,7 @@ namespace read {
 
 //! Classe Control
 /*!
- *  Na classe Control é implementado os métodos para abrir, ler e fechar o
+ *  Na classe Controle é implementado os métodos para abrir, ler e fechar o
  *  arquivo. Assim como métodos para inicialização do Mercado com seus atributos
  *  e a inicialização dos Caixas.
  */

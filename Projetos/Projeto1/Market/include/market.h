@@ -1,3 +1,11 @@
+/*!
+ *  \author Luiz Felipe Ribeiro Baroncello
+ *  \author Lukas Derner Grüdtner
+ *  \version 1.0
+ *  \copyright General Public License version 2
+ *
+ */
+
 #ifndef MARKET_H
 #define MARKET_H
 #include <string>

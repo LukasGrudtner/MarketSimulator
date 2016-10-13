@@ -1,3 +1,11 @@
+/*!
+ *  \author Luiz Felipe Ribeiro Baroncello
+ *  \author Lukas Derner Grüdtner
+ *  \version 1.0
+ *  \copyright General Public License version 2
+ *
+ */
+
 #ifndef TIME_H
 #define TIME_H
 
@@ -21,7 +29,13 @@ class Time
         *   Adiciona n segundos ao tempo decorido.
         *   \param seconds tempo a ser adicionado.
         */
-        void add_seconds(const unsigned int& seconds);
+        void add_seconds(const unsigned int& seconds);/*!
+ *  \author Luiz Felipe Ribeiro Baroncello
+ *  \author Lukas Derner Grüdtner
+ *  \version 1.0
+ *  \copyright General Public License version 2
+ *
+ */
 
         /*!
         *   Retorna tempo em segundos.

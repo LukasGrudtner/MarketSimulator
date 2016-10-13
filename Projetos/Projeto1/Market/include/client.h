@@ -1,3 +1,11 @@
+/*!
+ *  \author Luiz Felipe Ribeiro Baroncello
+ *  \author Lukas Derner Grüdtner
+ *  \version 1.0
+ *  \copyright General Public License version 2
+ *
+ */
+
 #ifndef CLIENT_H
 #define CLIENT_H
 

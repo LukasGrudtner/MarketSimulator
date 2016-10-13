@@ -242,3 +242,110 @@
 	<iomanip>
 	<string>
 
+1476315759 source:/home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/main.cpp
+	<iostream>
+	<stdio.h>
+	"performance.h"
+	"lukas.h"
+	"TestLuiz.h"
+	"control.h"
+	<sstream>
+	<fstream>
+	<string>
+	<iostream>
+
+1476315759 /home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/include/performance.h
+
+1476315759 /home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/include/lukas.h
+	"linked_queue.h"
+	<iostream>
+	"client.h"
+	"market_box.h"
+
+1476315759 /home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/include/linked_queue.h
+	"client.h"
+	<cstdint>
+	<stdexcept>
+
+1476315759 /home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/include/client.h
+	"time_p.h"
+
+1476315759 /home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/include/time_p.h
+
+1476315759 /home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/include/market_box.h
+	<stdexcept>
+	<string>
+	"linked_queue.h"
+	"performance.h"
+	"time.h"
+
+1476315759 /home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/include/TestLuiz.h
+	<iostream>
+	<string>
+	"performance.h"
+	"clock.h"
+	"circular_list.h"
+	"market_box.h"
+	"client.h"
+	"linked_queue.h"
+	"market.h"
+
+1476315759 /home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/include/clock.h
+	"time_p.h"
+
+1476315759 /home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/include/circular_list.h
+	<cstdint>
+	<stdexcept>
+	"market_box.h"
+
+1476315759 /home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/include/market.h
+	<string>
+	"performance.h"
+	"clock.h"
+	"circular_list.h"
+	"market_box.h"
+	"client.h"
+	"linked_queue.h"
+
+1476315759 /home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/include/control.h
+	<string>
+	<fstream>
+	<sstream>
+	"market.h"
+
+1476315759 source:/home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/src/circular_list.cpp
+	"circular_list.h"
+
+1476315759 source:/home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/src/client.cpp
+	<stdlib.h>
+	<time.h>
+	"client.h"
+	<iostream>
+
+1476315759 source:/home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/src/clock.cpp
+	"clock.h"
+
+1476315759 source:/home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/src/control.cpp
+	"control.h"
+	<iostream>
+	<sstream>
+	<iomanip>
+	<string>
+
+1476315759 source:/home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/src/linked_queue.cpp
+	"linked_queue.h"
+
+1476315759 source:/home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/src/market.cpp
+	"market.h"
+	<iostream>
+
+1476315759 source:/home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/src/market_box.cpp
+	"market_box.h"
+	<iostream>
+
+1476315759 source:/home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/src/performance.cpp
+	"performance.h"
+
+1476315759 source:/home/lukasgrudtner/Git/Estrutura-de-Dados/Projetos/Projeto1/Market/src/time_p.cpp
+	"time_p.h"
+
