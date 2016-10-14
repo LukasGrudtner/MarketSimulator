@@ -12,10 +12,11 @@ class Lukas
     public:
         Lukas()
         {
-            TESTLinkedQueue();
+            //TESTLinkedQueue();
         }
         virtual ~Lukas(){}
 
+        /*
         TESTLinkedQueue()
         {
             cout << "===================LINKED QUEUE===================" << endl;
@@ -33,7 +34,7 @@ class Lukas
             lqueue->dequeue();
             cout << "Num People | 0 = " << lqueue->num_people() << endl;
             cout << "===================LINKED QUEUE===================\n" << endl;
-        }
+        }*/
 
 
     protected:

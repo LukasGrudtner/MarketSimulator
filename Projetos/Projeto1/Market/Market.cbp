@@ -5,7 +5,7 @@
 		<Option title="Market" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="model\structures\;model\;model\box\;model\client\;model\market\;" />
+		<Option virtualFolders="model/structures/;model/;model/box/;model/client/;model/market/;control/;ui/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/Market" prefix_auto="1" extension_auto="1" />
@@ -45,7 +45,9 @@
 		<Unit filename="include/clock.h">
 			<Option virtualFolder="model/market/" />
 		</Unit>
-		<Unit filename="include/control.h" />
+		<Unit filename="include/control.h">
+			<Option virtualFolder="control/" />
+		</Unit>
 		<Unit filename="include/linked_queue.h">
 			<Option virtualFolder="model/structures/" />
 		</Unit>
@@ -62,6 +64,7 @@
 		<Unit filename="include/time_p.h">
 			<Option virtualFolder="model/market/" />
 		</Unit>
+		<Unit filename="include/user_interaction.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/circular_list.cpp">
 			<Option virtualFolder="model/structures/" />
@@ -72,7 +75,9 @@
 		<Unit filename="src/clock.cpp">
 			<Option virtualFolder="model/market/" />
 		</Unit>
-		<Unit filename="src/control.cpp" />
+		<Unit filename="src/control.cpp">
+			<Option virtualFolder="control/" />
+		</Unit>
 		<Unit filename="src/linked_queue.cpp">
 			<Option virtualFolder="model/structures/" />
 		</Unit>
@@ -88,6 +93,7 @@
 		<Unit filename="src/time_p.cpp">
 			<Option virtualFolder="model/market/" />
 		</Unit>
+		<Unit filename="src/user_interaction.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -34,6 +34,7 @@ class Control
          */
         Control();
 
+        void type_of_entry();
         /*!
          *  Abre arquivo
          *  \param ifstream& file.dat para ser aberto.
