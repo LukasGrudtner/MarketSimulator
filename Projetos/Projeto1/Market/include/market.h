@@ -8,6 +8,7 @@
 
 #ifndef MARKET_H
 #define MARKET_H
+
 #include <string>
 
 #include "performance.h"

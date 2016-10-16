@@ -1,7 +1,5 @@
 #include "market.h"
 
-#include <iostream>
-
 Market::Market(std::string market_name,unsigned int time_of_simulation, unsigned int average_time_of_arrival_of_clients, unsigned int max_clients_in_queue)
 {
     box_list = new CircularList();
@@ -103,7 +101,7 @@ void Market::add_client_less_size_queue(Client* client)
 void Market::add_client_less_products_queue(Client* client)
 {
     MarketBox* aux_less_products;
-    int less_products = 10000000000000;
+    int less_products = 10000000000;
 
      box_list->passes_forward();
      while (box_list->get_data_pointer_element()->get_identifier() != "sentinel") {
@@ -190,7 +188,7 @@ void Market::set_dropped_client(Client* client)
 {
     clients_dropped_out++;
     billing_lost += client->get_total_value();
-   // delete client;
+
     if (reserve_box) {
         add_box("Reserva", 1, 1600);
         reserve_box = false;

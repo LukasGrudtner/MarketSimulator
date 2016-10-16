@@ -1,6 +1,6 @@
-#include "market_box.h"
-
 #include <iostream>
+
+#include "market_box.h"
 
 MarketBox::MarketBox()
 {

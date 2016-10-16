@@ -7,7 +7,7 @@
 
 using namespace std;
 
-namespace read {
+namespace control {
 
     Control::Control()
     {
@@ -179,7 +179,7 @@ namespace read {
       cout << "Tempo medio de permanencia de um cliente na fila: " << market->get_average_queue_time_in_seconds() << " segundos\n"
            << "Numero de clientes que desistiram: " << market->get_dropped_out() << "\n"
            << "Faturamento que deixou de ser realizado: R$ " << market->get_billing_lost() << ",00\n"
-           << "============================================================\n\n";
+           << "===========================================================\n\n";
     }
 
 }

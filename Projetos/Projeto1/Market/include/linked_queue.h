@@ -9,9 +9,10 @@
 #ifndef LINKEDQUEUE_H
 #define LINKEDQUEUE_H
 
-#include "client.h"
 #include <cstdint>
 #include <stdexcept>
+
+#include "client.h"
 
 //! Classe LinkedQueue
 /*! A classe implementa a estrutura de fila encadeada, onde o tamanho é dinâmico, sendo no maximo 10,

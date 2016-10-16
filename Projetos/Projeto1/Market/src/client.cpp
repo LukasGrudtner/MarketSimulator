@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <time.h>
+#include <iostream>
 
 #include "client.h"
-#include <iostream>
 
 Client::Client()
 {

@@ -1,6 +1,7 @@
-#include "user_interaction.h"
 #include <iostream>
 #include <string>
+
+#include "user_interaction.h"
 
 using namespace std;
 
@@ -44,20 +45,15 @@ bool UserInteraction::select_entry_with_file()
 
 string UserInteraction::get_string(string msg)
 {
-    //char market_name[256];
     string input;
-
     cout << msg;
-    //cin.getline(market_name, 255);
     cin >> input;
-
     return input;
 }
 
 unsigned int UserInteraction::get_unsigned_int(string msg)
 {
     unsigned int input;
-
     cout << msg;
     cin >> input;
     return input;
@@ -66,7 +62,6 @@ unsigned int UserInteraction::get_unsigned_int(string msg)
 string UserInteraction::get_string_with_index(string msg, int index)
 {
     string input;
-
     cout << msg << " [" << index << "]: ";
     cin >> input;
     return input;
@@ -75,7 +70,6 @@ string UserInteraction::get_string_with_index(string msg, int index)
 unsigned int UserInteraction::get_unsigned_int_with_index(string msg, int index)
 {
     unsigned int input;
-
     cout << msg << " [" << index << "]: ";
     cin >> input;
     return input;
@@ -84,9 +78,7 @@ unsigned int UserInteraction::get_unsigned_int_with_index(string msg, int index)
 double UserInteraction::get_double_with_index(string msg, int index)
 {
     double input;
-
     cout << msg << " [" << index << "]: ";
     cin >> input;
     return input;
 }
-

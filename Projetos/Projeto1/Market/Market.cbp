@@ -35,7 +35,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/TestLuiz.h" />
 		<Unit filename="include/circular_list.h">
 			<Option virtualFolder="model/structures/" />
 		</Unit>
@@ -51,7 +50,6 @@
 		<Unit filename="include/linked_queue.h">
 			<Option virtualFolder="model/structures/" />
 		</Unit>
-		<Unit filename="include/lukas.h" />
 		<Unit filename="include/market.h">
 			<Option virtualFolder="model/market/" />
 		</Unit>
@@ -64,7 +62,9 @@
 		<Unit filename="include/time_p.h">
 			<Option virtualFolder="model/market/" />
 		</Unit>
-		<Unit filename="include/user_interaction.h" />
+		<Unit filename="include/user_interaction.h">
+			<Option virtualFolder="ui/" />
+		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="src/circular_list.cpp">
 			<Option virtualFolder="model/structures/" />
@@ -93,7 +93,9 @@
 		<Unit filename="src/time_p.cpp">
 			<Option virtualFolder="model/market/" />
 		</Unit>
-		<Unit filename="src/user_interaction.cpp" />
+		<Unit filename="src/user_interaction.cpp">
+			<Option virtualFolder="ui/" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -17,13 +17,13 @@
 
 using namespace std;
 
-namespace read {
+namespace control {
 
 //! Classe Control
 /*!
- *  Na classe Controle � implementado os m�todos para abrir, ler e fechar o
- *  arquivo. Assim como m�todos para inicializa��o do Mercado com seus atributos
- *  e a inicializa��o dos Caixas.
+ *  Na classe Controle e implementado os metodos para abrir, ler e fechar o
+ *  arquivo. Assim como motodos para inicializacao do Mercado com seus atributos
+ *  e a inicializacao dos Caixas.
  */
 
 class Control
@@ -34,8 +34,17 @@ class Control
          */
         Control();
 
+        /*!
+         * Define o tipo de entrada dos parametros para simulação: manual ou por
+         * meio de um arquivo.dat.
+         */
         void type_of_entry();
+
+        /*!
+         * Imprime os dados da simulacao.
+         */
         void print_data();
+
         /*!
          *  Abre arquivo
          *  \param ifstream& file.dat para ser aberto.
@@ -43,7 +52,7 @@ class Control
         void open_file(std::ifstream &);
 
         /*!
-         *  L� arquivo.
+         *  Le arquivo.
          *  \param ifstream& file.dat para ser lido e carregado.
          */
         void read_file(std::ifstream &);
@@ -55,8 +64,8 @@ class Control
         void close_file(std::ifstream &);
 
         /*!
-         *  Verifica se a linha � coment�rio.
-         * \param ifstream& file.dat para verificar se a linha � um coment�rio.
+         *  Verifica se a linha e comentario.
+         * \param ifstream& file.dat para verificar se a linha e um comentario.
          */
         bool read_comment(std::ifstream &);
 
@@ -66,9 +75,24 @@ class Control
          */
         void insert(std::string buffer[]);
 
+        /*!
+         * Retorna uma string com o nome do mercado.
+         */
         std::string get_market_name();
+
+        /*!
+         * Retorna um inteiro com o tempo da simulacao em horas.
+         */
         unsigned int get_time_of_simulation_in_hours();
+
+        /*!
+         * Retorna um inteiro com o tempo medio da chegada dos clientes.
+         */
         unsigned int get_average_arrival_time_of_customers_in_seconds();
+
+        /*!
+         * Retorna um inteiro com o numero de caixas.
+         */
         unsigned int get_number_of_market_box();
 
     private:
