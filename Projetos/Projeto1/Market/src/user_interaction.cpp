@@ -42,68 +42,51 @@ bool UserInteraction::select_entry_with_file()
         return false;
 }
 
-string UserInteraction::get_market_name()
+string UserInteraction::get_string(string msg)
 {
-    char market_name[256];
+    //char market_name[256];
+    string input;
 
-    cout << "\nInsira o nome do Supermercado: ";
+    cout << msg;
     //cin.getline(market_name, 255);
-    cin >> market_name;
+    cin >> input;
 
-    return market_name;
+    return input;
 }
 
 unsigned int UserInteraction::get_unsigned_int(string msg)
 {
     unsigned int input;
 
-    cout << "\n" << msg;
+    cout << msg;
     cin >> input;
     return input;
 }
 
-unsigned int UserInteraction::get_average_arrival_time_of_customers()
+string UserInteraction::get_string_with_index(string msg, int index)
 {
-    unsigned int average_arrival_time_of_curstomers;
+    string input;
 
-    cout << "\nInsira o tempo médio de chegada dos clientes (em segundos): ";
-    cin >> average_arrival_time_of_curstomers;
-    return average_arrival_time_of_curstomers;
+    cout << msg << " [" << index << "]: ";
+    cin >> input;
+    return input;
 }
 
-unsigned int UserInteraction::get_number_of_box()
+unsigned int UserInteraction::get_unsigned_int_with_index(string msg, int index)
 {
-    unsigned int number_of_box;
+    unsigned int input;
 
-    cout << "\nInsira o numero de caixas: ";
-    cin >> number_of_box;
-    return number_of_box;
+    cout << msg << " [" << index << "]: ";
+    cin >> input;
+    return input;
 }
 
-string UserInteraction::get_identifier_box(int index)
+double UserInteraction::get_double_with_index(string msg, int index)
 {
-    string identifier;
+    double input;
 
-    cout << "\nInsira o identificador do caixa " << index << ": ";
-    cin >> identifier;
-    return identifier;
-}
-
-unsigned int UserInteraction::get_performance_box(int index)
-{
-    unsigned int performance;
-
-    cout << "\nInsira o desempenho do caixa " << index << ": ";
-    cin >> performance;
-    return performance;
-}
-
-unsigned int UserInteraction::get_salary_box(int index)
-{
-    unsigned int salary;
-
-    cout << "\nInsira o salário do caixa " << index << ": ";
-    cin >> salary;
-    return salary;
+    cout << msg << " [" << index << "]: ";
+    cin >> input;
+    return input;
 }
 

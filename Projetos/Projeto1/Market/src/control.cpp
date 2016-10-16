@@ -12,11 +12,6 @@ namespace read {
     Control::Control()
     {
         type_of_entry();
-
-        /*cout << "Market Name: " << get_market_name() << endl
-             << "Time of Simulation (in hours): " << get_time_of_simulation_in_hours() << endl
-             << "Average Arrival Time of Customers (in seconds): " << get_average_arrival_time_of_customers_in_seconds() << endl
-             << "Number of Market Box: " << get_number_of_market_box() << endl;*/
     }
 
     void Control::open_file(std::ifstream &file)
@@ -118,7 +113,8 @@ namespace read {
   void Control::type_of_entry()
   {
     string market_name, identifier;
-    unsigned int time_of_simulation, average_arrival_time_of_customers, number_of_box, performance, salary;
+    unsigned int time_of_simulation, average_arrival_time_of_customers, number_of_box, performance;
+    double salary;
     UserInteraction user;
 
     if (user.select_entry_with_file()) {
@@ -127,23 +123,24 @@ namespace read {
         close_file(file);
 
     } else {
-        market_name = user.get_market_name();
-        time_of_simulation = user.get_unsigned_int("Insira o tempo de simulação (em horas): ");
-        average_arrival_time_of_customers = user.get_unsigned_int("Insira o tempo médio de chegada dos clientes (em segundos): ");
-        number_of_box = user.get_unsigned_int("Insira o número de caixas: ");
+        cout << "==============================================================\n";
+        market_name = user.get_string("Informe o nome do Supermercado: ");
+        time_of_simulation = user.get_unsigned_int("Insira o tempo de simulacao (em horas): ");
+        average_arrival_time_of_customers = user.get_unsigned_int("Insira o tempo medio de chegada dos clientes (em segundos): ");
+        number_of_box = user.get_unsigned_int("Insira o numero de caixas: ");
+        cout << "==============================================================\n";
 
         market = new Market(market_name, time_of_simulation, average_arrival_time_of_customers, 10u);
 
         for (auto i = 0u; i < number_of_box; ++i) {
-            identifier = user.get_identifier_box(i+1);
-            performance = user.get_performance_box(i+1);
-            salary = user.get_salary_box(i+1);
-
-            cout << "Identifier: " << identifier << "\n"
-                 << "Performance: " << performance << "\n"
-                 << "Salary: " << salary << "\n";
+            identifier = user.get_string_with_index("Insira o identificador do caixa", i+1);
+            performance = user.get_unsigned_int_with_index("Informe o desempenho do caixa", i+1);
+            salary = user.get_double_with_index("Informe o salario do caixa", i+1);
 
             market->add_box(identifier, performance, salary);
+
+            cout << "Caixa adicionado!\n"
+                 << "===============================================================\n";
         }
     }
   }
