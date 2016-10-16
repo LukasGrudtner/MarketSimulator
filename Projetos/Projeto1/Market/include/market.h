@@ -58,17 +58,13 @@ class Market
         *   \param posicao de caixa q se deseja saber a informacao.
         *   \return faturamento medio de caixa em especifico.
         */
-        long int get_average_billing_box(unsigned int index) {
-            return box_list->at(index)->get_average_billing();
-        }
+        long int get_average_billing_box(unsigned int index);
 
         /*!
         *   \param posicao de caixa q se deseja saber a informacao.
         *   \return faturamento total de caixa em especifico.
         */
-        long int get_billing(unsigned int index) {
-            return box_list->at(index)->get_total_billing();
-        }
+        long int get_billing(unsigned int index);
 
         /*!
         *   \return lucro total.
@@ -79,9 +75,7 @@ class Market
         *   \param posicao de caixa q se deseja saber a informacao.
         *   \return lucro provido por determinado caixa.
         */
-        long int get_profit(unsigned int index) {
-            return box_list->at(index)->get_profit();
-        }
+        long int get_profit(unsigned int index);
 
         /*!
         *   \return tempo medio que um cliente passa na fila ao chegar nesse mercado.
@@ -91,38 +85,28 @@ class Market
         /*!
         *   \return numero de clientes q desistiram.
         */
-        int get_dropped_out() {
-            return clients_dropped_out;
-        }
+        int get_dropped_out();
 
         /*!
         *   \return faturamento que deixou de ser realizado.
         */
-        long int get_billing_lost() {
-            return billing_lost;
-        }
+        long int get_billing_lost();
 
         /*!
         *   \return nome do mercado.
         */
-        std::string get_maket_name() {
-            return market_name_;
-        }
+        std::string get_market_name();
 
         /*!
         *   \param posicao de caixa q se deseja saber a informacao.
         *   \return identificador do caixa.
         */
-        std::string get_identifier(unsigned int index) {
-            return box_list->at(index)->get_identifier();
-        }
+        std::string get_identifier(unsigned int index);
 
         /*!
         *   \return numero de caixas adicionados ao mercado.
         */
-        int get_num_of_boxes() {
-            return box_list->size();
-        }
+        int get_num_of_boxes();
 
     private:
         /*!

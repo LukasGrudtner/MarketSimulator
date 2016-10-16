@@ -1,6 +1,6 @@
 /*!
  *  \author Luiz Felipe Ribeiro Baroncello
- *  \author Lukas Derner Grüdtner
+ *  \author Lukas Derner Grï¿½dtner
  *  \version 1.0
  *  \copyright General Public License version 2
  *
@@ -21,9 +21,9 @@ namespace read {
 
 //! Classe Control
 /*!
- *  Na classe Controle é implementado os métodos para abrir, ler e fechar o
- *  arquivo. Assim como métodos para inicialização do Mercado com seus atributos
- *  e a inicialização dos Caixas.
+ *  Na classe Controle ï¿½ implementado os mï¿½todos para abrir, ler e fechar o
+ *  arquivo. Assim como mï¿½todos para inicializaï¿½ï¿½o do Mercado com seus atributos
+ *  e a inicializaï¿½ï¿½o dos Caixas.
  */
 
 class Control
@@ -35,6 +35,7 @@ class Control
         Control();
 
         void type_of_entry();
+        void print_data();
         /*!
          *  Abre arquivo
          *  \param ifstream& file.dat para ser aberto.
@@ -42,7 +43,7 @@ class Control
         void open_file(std::ifstream &);
 
         /*!
-         *  Lê arquivo.
+         *  Lï¿½ arquivo.
          *  \param ifstream& file.dat para ser lido e carregado.
          */
         void read_file(std::ifstream &);
@@ -54,8 +55,8 @@ class Control
         void close_file(std::ifstream &);
 
         /*!
-         *  Verifica se a linha é comentário.
-         * \param ifstream& file.dat para verificar se a linha é um comentário.
+         *  Verifica se a linha ï¿½ comentï¿½rio.
+         * \param ifstream& file.dat para verificar se a linha ï¿½ um comentï¿½rio.
          */
         bool read_comment(std::ifstream &);
 
@@ -72,12 +73,12 @@ class Control
 
     private:
         ifstream file;  /*!< Arquivo. */
-        std::string line;   /*!< Linha, uma variável do tipo string. */
+        std::string line;   /*!< Linha, uma variï¿½vel do tipo string. */
         std::string market_name;    /*!< Nome do mercado, do tipo string. */
-        unsigned int time_of_simulation_in_hours;   /*!< Tempo de simulação. */
-        unsigned int average_arrival_time_of_customers_in_seconds;  /*!< Tempo médio de chegada de clientes. */
-        unsigned int number_of_market_box;  /*!< Número de caixas do mercado. */
-        Market* market; /*!< Ponteiro para a instância do Mercado. */
+        unsigned int time_of_simulation_in_hours;   /*!< Tempo de simulaï¿½ï¿½o. */
+        unsigned int average_arrival_time_of_customers_in_seconds;  /*!< Tempo mï¿½dio de chegada de clientes. */
+        unsigned int number_of_market_box;  /*!< Nï¿½mero de caixas do mercado. */
+        Market* market; /*!< Ponteiro para a instï¿½ncia do Mercado. */
 };
 
 }

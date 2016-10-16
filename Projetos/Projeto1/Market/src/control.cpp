@@ -1,7 +1,7 @@
 #include "control.h"
 #include <iostream>
 #include <sstream>
-#include <iomanip> // Manipulação de entrada e saída
+#include <iomanip> // Manipulaï¿½ï¿½o de entrada e saï¿½da
 #include <string>
 #include "user_interaction.h"
 
@@ -13,6 +13,7 @@ namespace read {
     {
         type_of_entry();
         market->start_simulation();
+        print_data();
     }
 
     void Control::open_file(std::ifstream &file)
@@ -40,15 +41,17 @@ namespace read {
 
         market = new Market(get_market_name(), get_time_of_simulation_in_hours(), get_average_arrival_time_of_customers_in_seconds(), 10u);
 
+        cout << "=================== CAIXAS REGISTRADOS =====================";
         while (!file.eof()) {
             file >> name >> performance >> salary;
             if (!file.eof() && name != "") {
-                cout << "Name: " << name << endl
-                     << "Performance: " << performance << endl
-                     << "Salary: " << salary << endl << endl;
+                cout << "\nNome: " << name
+                     << "\nDesempenho: " << performance
+                     << "\nSalario: " << salary << "\n";
+                     market->add_box(name, performance, salary);
             }
-            market->add_box(name, performance, salary);
         }
+        cout << "===========================================================\n";
     }
 
     void Control::close_file(std::ifstream &file)
@@ -147,5 +150,36 @@ namespace read {
         market->start_simulation();
     }
   }
+
+  void Control::print_data()
+  {
+      cout << "\n======================== SIMULACAO ========================\n"
+           << "Tempo de SimulaÃ§Ã£o: " << get_time_of_simulation_in_hours() << " horas\n"
+           << "Tempo Medio de Chegada dos Clientes: "
+           << get_average_arrival_time_of_customers_in_seconds() << " segundos\n"
+           << "Numero de Caixas: " << get_number_of_market_box() << "\n";
+      cout << "===========================================================\n";
+
+      cout << "\n====================== SUPERMERCADO =======================\n"
+           << "Nome do Supermercado: " << market->get_market_name() << "\n"
+           << "Faturamento Total do Supermercado: R$ " << market->get_total_billing() << ",00\n"
+           << "Faturamento MÃ©dio: R$ " << market->get_average_billing() << ",00\n"
+           << "===========================================================\n";
+
+      cout << "\n======================== CAIXAS ===========================";
+      for (auto i = 0u; i < market->get_num_of_boxes(); ++i) {
+          cout << "\n--- Caixa [" << market->get_identifier(i) << "] ---\n";
+          cout << "Faturamento Medio: R$ " << market->get_average_billing_box(i) << ",00\n"
+               << "Faturamento Total: R$ " << market->get_billing(i) << ",00\n"
+               << "Lucro: R$ " << market->get_profit(i) << ",00\n";
+      }
+      cout << "===========================================================\n\n";
+
+      cout << "================= INFORMACOES ADICIONAIS ==================\n";
+      cout << "Tempo medio de permanencia de um cliente na fila: " << market->get_average_queue_time_in_seconds() << " segundos\n"
+           << "Numero de clientes que desistiram: " << market->get_dropped_out() << "\n"
+           << "Faturamento que deixou de ser realizado: R$ " << market->get_billing_lost() << ",00\n"
+           << "============================================================\n\n";
+    }
 
 }

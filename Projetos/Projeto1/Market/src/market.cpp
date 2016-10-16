@@ -103,7 +103,7 @@ void Market::add_client_less_size_queue(Client* client)
 void Market::add_client_less_products_queue(Client* client)
 {
     MarketBox* aux_less_products;
-    int less_products = 100000;
+    int less_products = 10000000000000;
 
      box_list->passes_forward();
      while (box_list->get_data_pointer_element()->get_identifier() != "sentinel") {
@@ -195,4 +195,36 @@ void Market::set_dropped_client(Client* client)
         add_box("Reserva", 1, 1600);
         reserve_box = false;
     }
+}
+
+long int Market::get_average_billing_box(unsigned int index) {
+    return box_list->at(index)->get_average_billing();
+}
+
+long int Market::get_billing(unsigned int index) {
+    return box_list->at(index)->get_total_billing();
+}
+
+long int Market::get_profit(unsigned int index) {
+    return box_list->at(index)->get_profit();
+}
+
+int Market::get_dropped_out() {
+    return clients_dropped_out;
+}
+
+long int Market::get_billing_lost() {
+    return billing_lost;
+}
+
+std::string Market::get_market_name() {
+    return market_name_;
+}
+
+std::string Market::get_identifier(unsigned int index) {
+    return box_list->at(index)->get_identifier();
+}
+
+int Market::get_num_of_boxes() {
+    return box_list->size();
 }

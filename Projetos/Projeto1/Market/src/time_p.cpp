@@ -15,17 +15,19 @@ void Time::add_seconds(const unsigned int& seconds)
     time_in_seconds += seconds;
 }
 
-const unsigned int& Time::get_time_in_seconds() const
+const unsigned int Time::get_time_in_seconds() const
 {
     return time_in_seconds;
 }
 
-const unsigned int& Time::get_time_in_minutes() const
+const unsigned int Time::get_time_in_minutes() const
 {
+    unsigned int time = get_time_in_seconds()/60;
+
     return (get_time_in_seconds()/60);
 }
 
-const unsigned int& Time::get_time_in_hours() const
+const unsigned int Time::get_time_in_hours() const
 {
     return get_time_in_minutes()/60;
 }
