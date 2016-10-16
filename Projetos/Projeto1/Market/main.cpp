@@ -1,8 +1,6 @@
 #include <iostream>
 #include <stdio.h>
 #include "performance.h"
-#include "lukas.h"
-#include "TestLuiz.h"
 #include "control.h"
 #include "user_interaction.h"
 #include <sstream>
