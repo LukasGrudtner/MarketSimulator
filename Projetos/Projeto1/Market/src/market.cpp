@@ -103,7 +103,7 @@ void Market::add_client_less_size_queue(Client* client)
 void Market::add_client_less_products_queue(Client* client)
 {
     MarketBox* aux_less_products;
-    int less_products = 10000000000000;
+    int less_products = 100000;
 
      box_list->passes_forward();
      while (box_list->get_data_pointer_element()->get_identifier() != "sentinel") {

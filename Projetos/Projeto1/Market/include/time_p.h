@@ -30,12 +30,6 @@ class Time
         *   \param seconds tempo a ser adicionado.
         */
         void add_seconds(const unsigned int& seconds);/*!
- *  \author Luiz Felipe Ribeiro Baroncello
- *  \author Lukas Derner Grüdtner
- *  \version 1.0
- *  \copyright General Public License version 2
- *
- */
 
         /*!
         *   Retorna tempo em segundos.
