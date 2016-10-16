@@ -12,6 +12,7 @@ namespace read {
     Control::Control()
     {
         type_of_entry();
+        market->start_simulation();
     }
 
     void Control::open_file(std::ifstream &file)
@@ -142,6 +143,8 @@ namespace read {
             cout << "Caixa adicionado!\n"
                  << "===============================================================\n";
         }
+
+        market->start_simulation();
     }
   }
 
