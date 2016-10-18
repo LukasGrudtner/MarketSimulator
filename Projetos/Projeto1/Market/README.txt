@@ -1,6 +1,6 @@
     ### Manual de Operação para o Market Simulator 3000 ###
 
-    Obs.: Caso necessite compilar pelo terminal, segue o comando:
+    Obs.: Caso necessite compilar pelo terminal, use o seguinte comando:
     ============================================================================
     g++ -o market main.cpp circular_list.cpp client.cpp clock.cpp control.cpp
     linked_queue.cpp market.cpp market_box.cpp performance.cpp time_p.cpp
